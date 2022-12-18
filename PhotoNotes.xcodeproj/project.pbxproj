@@ -7,22 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337819294FA68D0075A289 /* PhotoNote.swift */; };
+		A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133781B294FA9CF0075A289 /* Date+Extensions.swift */; };
+		A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A133781D294FACDF0075A289 /* PhotoNotes.xcdatamodeld */; };
+		A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337820294FCCC90075A289 /* PersistenceErrors.swift */; };
 		A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */; };
 		A13428A92945FB1800BFA87C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A82945FB1800BFA87C /* ContentView.swift */; };
 		A13428AB2945FB1900BFA87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13428AA2945FB1900BFA87C /* Assets.xcassets */; };
 		A13428AE2945FB1900BFA87C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13428AD2945FB1900BFA87C /* Preview Assets.xcassets */; };
 		A13428B02945FB1900BFA87C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428AF2945FB1900BFA87C /* Persistence.swift */; };
-		A13428B32945FB1900BFA87C /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A13428B12945FB1900BFA87C /* PhotoNotes.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A1337819294FA68D0075A289 /* PhotoNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoNote.swift; sourceTree = "<group>"; };
+		A133781B294FA9CF0075A289 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A133781E294FACDF0075A289 /* PhotoNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoNotes.xcdatamodel; sourceTree = "<group>"; };
+		A1337820294FCCC90075A289 /* PersistenceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceErrors.swift; sourceTree = "<group>"; };
 		A13428A32945FB1800BFA87C /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNotesApp.swift; sourceTree = "<group>"; };
 		A13428A82945FB1800BFA87C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A13428AA2945FB1900BFA87C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A13428AD2945FB1900BFA87C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A13428AF2945FB1900BFA87C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		A13428B22945FB1900BFA87C /* PhotoNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoNotes.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,10 @@
 		A16E77BF294F97F10067C66E /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				A1337819294FA68D0075A289 /* PhotoNote.swift */,
 				A13428AF2945FB1900BFA87C /* Persistence.swift */,
-				A13428B12945FB1900BFA87C /* PhotoNotes.xcdatamodeld */,
+				A133781D294FACDF0075A289 /* PhotoNotes.xcdatamodeld */,
+				A1337820294FCCC90075A289 /* PersistenceErrors.swift */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -186,8 +194,11 @@
 			files = (
 				A13428B02945FB1900BFA87C /* Persistence.swift in Sources */,
 				A13428A92945FB1800BFA87C /* ContentView.swift in Sources */,
-				A13428B32945FB1900BFA87C /* PhotoNotes.xcdatamodeld in Sources */,
+				A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */,
+				A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */,
+				A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */,
 				A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */,
+				A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,12 +401,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A13428B12945FB1900BFA87C /* PhotoNotes.xcdatamodeld */ = {
+		A133781D294FACDF0075A289 /* PhotoNotes.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				A13428B22945FB1900BFA87C /* PhotoNotes.xcdatamodel */,
+				A133781E294FACDF0075A289 /* PhotoNotes.xcdatamodel */,
 			);
-			currentVersion = A13428B22945FB1900BFA87C /* PhotoNotes.xcdatamodel */;
+			currentVersion = A133781E294FACDF0075A289 /* PhotoNotes.xcdatamodel */;
 			path = PhotoNotes.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
