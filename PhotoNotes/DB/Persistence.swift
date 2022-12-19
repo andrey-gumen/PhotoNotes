@@ -1,21 +1,19 @@
-//
-//  Persistence.swift
-//  PhotoNotes
-//
-//  Created by Andrey Gumen on 11.12.2022.
-//
-
 import CoreData
+import UIKit
 
 struct PersistenceController {
-    static let shared = PersistenceController()
-
+    
+    let container: NSPersistentContainer
+    
+    // MARK: Preview
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+        for _ in 0 ..< 10 {
+            let newItem = PhotoNoteEntity(context: viewContext)
+            newItem.date = Date.randomBetween(start: Date(timeIntervalSince1970: CFTimeInterval(0)), end: Date.now)
+            newItem.image = nil
+            newItem.note = "test"
         }
         do {
             try viewContext.save()
@@ -27,15 +25,21 @@ struct PersistenceController {
         }
         return result
     }()
-
-    let container: NSPersistentContainer
-
-    init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "PhotoNotes")
+    
+    // MARK: runtime
+    static let shared = PersistenceController()
+    
+    
+    var managedContext: NSManagedObjectContext {
+        container.viewContext
+    }
+    
+    private init(inMemory: Bool = false) {
+        self.container = NSPersistentContainer(name: "PhotoNotes")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
@@ -53,4 +57,97 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+
+    func add(note: PhotoNote) -> Result<Void, Error> {
+        if let entity = NSEntityDescription.entity(forEntityName: Constants.photoNoteEntity, in: managedContext) {
+            do {
+                let storage = NSManagedObject(entity: entity, insertInto: managedContext)
+                storage.setValue(note.date, forKey: Constants.photoNoteDateKey)
+                storage.setValue(note.image?.pngData(), forKey: Constants.photoNoteImageKey)
+                storage.setValue(note.note, forKey: Constants.photoNoteNoteKey)
+                
+                try managedContext.save()
+                return .success(Void())
+            } catch let error as NSError {
+                return .failure(error)
+            }
+        } else {
+            return .failure(PersistenceError.PhotoNoteEntityCreation)
+        }
+    }
+
+    func delete(offsets: IndexSet) -> Result<Void, Error> {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.photoNoteEntity)
+
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            offsets.map { objects[$0] }.forEach(managedContext.delete)
+
+            try managedContext.save()
+            return .success(Void())
+        } catch let error as NSError {
+            return .failure(error)
+        }
+    }
+
+    func getNotes() -> Result<[PhotoNote], Error> {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.photoNoteEntity)
+
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            var notes = [PhotoNote]()
+            for (index, object) in objects.enumerated() {
+                do {
+                    let photoNote = try PersistenceController.getNote(object)
+                    notes.append(photoNote)
+                } catch {
+                    print("object \(index): \(error)")
+                }
+            }
+            return .success(notes)
+        } catch let error as NSError {
+            return .failure(error)
+        }
+    }
+    
+
+    // MARK: Helpers
+
+    private static func getNote(_ object: NSManagedObject) throws -> PhotoNote {
+        guard let date = object.value(forKey: Constants.photoNoteDateKey) as? Date else {
+            throw PersistenceError.PhotoNoteEntityParsing
+        }
+        
+        let image = try getImage(key: Constants.photoNoteImageKey, object: object)
+        let note = object.value(forKey: Constants.photoNoteNoteKey) as? String
+        
+        return PhotoNote(
+            date: date,
+            image: image,
+            note: note
+        )
+    }
+
+    private static func getImage(key: String, object: NSManagedObject) throws -> UIImage?  {
+        let imageData = object.value(forKey: key) as? Data
+        guard let imageData else {
+            return nil
+        }
+        
+        guard let image = UIImage(data: imageData) else {
+            throw PersistenceError.PhotoNoteEntityParsing
+        }
+        return image
+    }
+    
+}
+
+private struct Constants {
+    
+    // MARK: PhotoNote entity constants
+    static let photoNoteEntity = "PhotoNoteEntity"
+    static let photoNoteDateKey = "date"
+    static let photoNoteImageKey = "image"
+    static let photoNoteNoteKey = "note"
+    
 }
