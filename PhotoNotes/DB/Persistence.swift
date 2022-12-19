@@ -59,12 +59,12 @@ struct PersistenceController {
     }
 
     func add(note: PhotoNote) -> Result<Void, Error> {
-        if let entity = NSEntityDescription.entity(forEntityName: Constants.photoNoteEntity, in: managedContext) {
+        if let entity = NSEntityDescription.entity(forEntityName: PhotoNoteEntityConstants.Name, in: managedContext) {
             do {
                 let storage = NSManagedObject(entity: entity, insertInto: managedContext)
-                storage.setValue(note.date, forKey: Constants.photoNoteDateKey)
-                storage.setValue(note.image?.pngData(), forKey: Constants.photoNoteImageKey)
-                storage.setValue(note.note, forKey: Constants.photoNoteNoteKey)
+                storage.setValue(note.date, forKey: PhotoNoteEntityConstants.DateKey)
+                storage.setValue(note.image?.pngData(), forKey: PhotoNoteEntityConstants.ImageKey)
+                storage.setValue(note.note, forKey: PhotoNoteEntityConstants.NoteKey)
                 
                 try managedContext.save()
                 return .success(Void())
@@ -77,7 +77,7 @@ struct PersistenceController {
     }
 
     func delete(offsets: IndexSet) -> Result<Void, Error> {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.photoNoteEntity)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
 
         do {
             let objects = try managedContext.fetch(fetchRequest)
@@ -91,7 +91,7 @@ struct PersistenceController {
     }
 
     func getNotes() -> Result<[PhotoNote], Error> {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: Constants.photoNoteEntity)
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
 
         do {
             let objects = try managedContext.fetch(fetchRequest)
@@ -114,12 +114,12 @@ struct PersistenceController {
     // MARK: Helpers
 
     private static func getNote(_ object: NSManagedObject) throws -> PhotoNote {
-        guard let date = object.value(forKey: Constants.photoNoteDateKey) as? Date else {
+        guard let date = object.value(forKey: PhotoNoteEntityConstants.DateKey) as? Date else {
             throw PersistenceError.PhotoNoteEntityParsing
         }
         
-        let image = try getImage(key: Constants.photoNoteImageKey, object: object)
-        let note = object.value(forKey: Constants.photoNoteNoteKey) as? String
+        let image = try getImage(key: PhotoNoteEntityConstants.ImageKey, object: object)
+        let note = object.value(forKey: PhotoNoteEntityConstants.NoteKey) as? String
         
         return PhotoNote(
             date: date,
@@ -142,12 +142,15 @@ struct PersistenceController {
     
 }
 
-private struct Constants {
+private extension PersistenceController {
     
     // MARK: PhotoNote entity constants
-    static let photoNoteEntity = "PhotoNoteEntity"
-    static let photoNoteDateKey = "date"
-    static let photoNoteImageKey = "image"
-    static let photoNoteNoteKey = "note"
+    struct PhotoNoteEntityConstants {
+        static let Name = "PhotoNoteEntity"
+        static let DateKey = "date"
+        static let ImageKey = "image"
+        static let NoteKey = "note"
+    }
     
 }
+
