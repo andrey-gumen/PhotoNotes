@@ -6,7 +6,6 @@ protocol Coordinator: Identifiable, Hashable, AnyObject {
 }
 
 extension Coordinator {
-    
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }
@@ -14,5 +13,4 @@ extension Coordinator {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
 }

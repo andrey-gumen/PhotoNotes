@@ -1,17 +1,13 @@
-import Combine
 import CoreData
 import SwiftUI
 
 final class AppCoordinator: ObservableObject {
 
     @Published var managedContext: NSManagedObjectContext
-    @Published var coordinators: [any Coordinator] = []
-    
-    private let cancellables: Set<AnyCancellable> = []
+    private var coordinators: [any Coordinator] = []
     
     init(_ managedContext: NSManagedObjectContext) {
         self.managedContext = managedContext
-        
         activateGalleryFlow()
     }
     
