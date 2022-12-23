@@ -2,7 +2,7 @@ import Combine
 import CoreData
 import SwiftUI
 
-final class GalleryCoordinator: Coordinator {
+final class GalleryCoordinator: NavigationCoordinator {
 
     let id = UUID()
     

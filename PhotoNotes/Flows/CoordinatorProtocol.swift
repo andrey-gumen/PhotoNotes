@@ -1,11 +1,11 @@
 import SwiftUI
 
-protocol Coordinator: Identifiable, Hashable, ObservableObject {
+protocol NavigationCoordinator: Identifiable, Hashable, ObservableObject {
     associatedtype Body: View
     func start() -> Body
 }
 
-extension Coordinator {
+extension NavigationCoordinator {
     static func == (lhs: Self, rhs: Self) -> Bool {
         lhs.id == rhs.id
     }

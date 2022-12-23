@@ -4,7 +4,7 @@ import SwiftUI
 final class AppCoordinator: ObservableObject {
 
     @Published var persistenceController: PersistenceController
-    private var coordinators: [any Coordinator] = []
+    private var coordinators: [any NavigationCoordinator] = []
     
     init(_ persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
