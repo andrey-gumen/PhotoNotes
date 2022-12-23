@@ -1,6 +1,6 @@
 import SwiftUI
 
-protocol Coordinator: Identifiable, Hashable, AnyObject {
+protocol Coordinator: Identifiable, Hashable, ObservableObject {
     associatedtype Body: View
     func start() -> Body
 }

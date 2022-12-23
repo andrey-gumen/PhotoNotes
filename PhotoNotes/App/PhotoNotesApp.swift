@@ -3,7 +3,7 @@ import SwiftUI
 @main
 struct PhotoNotesApp: App {
     
-    @StateObject var rootCoordinator = AppCoordinator(PersistenceController.shared.managedContext)
+    @StateObject var rootCoordinator = AppCoordinator(PersistenceController.shared)
 
     var body: some Scene {
         WindowGroup {

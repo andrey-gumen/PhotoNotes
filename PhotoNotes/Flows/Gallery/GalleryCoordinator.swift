@@ -5,21 +5,17 @@ import SwiftUI
 final class GalleryCoordinator: Coordinator {
 
     let id = UUID()
-    let managedContext: NSManagedObjectContext
-
+    
+    private let persistenceController: PersistenceController
     private let cancellables: Set<AnyCancellable> = []
 
-    init(_ managedContext: NSManagedObjectContext) {
-        self.managedContext = managedContext
+    init(_ persistenceController: PersistenceController) {
+        self.persistenceController = persistenceController
     }
     
     func start() -> some View {
-        return body
-    }
-    
-    var body: some View {
-        ContentView()
-            .environment(\.managedObjectContext, managedContext)
+        let viewModel = GalleryViewModel(persistenceController)
+        return GalleryView(viewModel: viewModel)
     }
     
 }

@@ -3,16 +3,16 @@ import SwiftUI
 
 final class AppCoordinator: ObservableObject {
 
-    @Published var managedContext: NSManagedObjectContext
+    @Published var persistenceController: PersistenceController
     private var coordinators: [any Coordinator] = []
     
-    init(_ managedContext: NSManagedObjectContext) {
-        self.managedContext = managedContext
+    init(_ persistenceController: PersistenceController) {
+        self.persistenceController = persistenceController
         activateGalleryFlow()
     }
     
     private func activateGalleryFlow() {
-        let coordinator = GalleryCoordinator(managedContext)
+        let coordinator = GalleryCoordinator(persistenceController)
         coordinators.append(coordinator)
     }
 
