@@ -5,31 +5,28 @@ struct GalleryView: View {
     @StateObject var viewModel: GalleryViewModel
         
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.notes) { item in
-                    NavigationLink {
-                        Text("Item at \(item.date, formatter: Date.itemFormatter)")
-                    } label: {
-                        Text(item.date, formatter: Date.itemFormatter)
-                    }
-                }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+        List {
+            ForEach(viewModel.notes) { item in
+                NavigationLink {
+                    Text("Item at \(item.date, formatter: Date.itemFormatter)")
+                } label: {
+                    Text(item.date, formatter: Date.itemFormatter)
                 }
             }
-            .onAppear {
-                viewModel.inputs.reloadDataSubject.send()
+            .onDelete(perform: deleteItems)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
             }
-            Text("Select an item")
+            ToolbarItem {
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
+                }
+            }
+        }
+        .onAppear {
+            viewModel.inputs.reloadDataSubject.send()
         }
     }
 
@@ -48,7 +45,9 @@ struct GalleryView: View {
 
 struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = GalleryViewModel(PersistenceController.preview)
-        GalleryView(viewModel: viewModel)
+        NavigationView {
+            let viewModel = GalleryViewModel(PersistenceController.preview)
+            GalleryView(viewModel: viewModel)
+        }
     }
 }

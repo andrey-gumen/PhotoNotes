@@ -6,8 +6,10 @@ struct AppNavigationView: View {
     @StateObject var rootCoordinator: AppCoordinator
     
     var body: some View {
-        let coordinator = GalleryCoordinator(rootCoordinator.persistenceController)
-        coordinator.start()
+        NavigationView {
+            let coordinator = GalleryCoordinator(rootCoordinator.persistenceController)
+            coordinator.start()
+        }
     }
 
 }
