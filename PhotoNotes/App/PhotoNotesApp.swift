@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct PhotoNotesApp: App {
-    let persistenceController = PersistenceController.shared
+    
+    @StateObject var rootCoordinator = AppCoordinator(PersistenceController.shared.managedContext)
 
     var body: some Scene {
         WindowGroup {
-//            let rootCoordinator = AppCoordinator(persistenceController.container.viewContext)
-//            NavigationView(coordinator: rootCoordinator)
+            AppNavigationView(rootCoordinator: rootCoordinator)
         }
     }
 }

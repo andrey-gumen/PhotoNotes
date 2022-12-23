@@ -3,16 +3,23 @@ import Combine
 
 struct AppNavigationView: View {
 
-    @ObservedObject var coordinator: AppCoordinator
+    @ObservedObject var rootCoordinator: AppCoordinator
     
     var body: some View {
         NavigationStack {
-            Text("Test")
-//            VStack() {
-//                //let currentCoordinator = coordinator.$coordinators
-//            }
-//            .navigationDestination(for: Coordinator.self) { _ in
-//                //$0.start()
+            VStack() {
+                //let currentCoordinator: GalleryCoordinator? = GalleryCoordinator(rootCoordinator.managedContext)
+                
+                //let currentCoordinator = rootCoordinator.coordinators?.last
+                //currentCoordinator?.body ?? EmptyView
+//                if let currentCoordinator = rootCoordinator.coordinators.last {
+//                    currentCoordinator.start()
+//                } else {
+//                    EmptyView()
+//                }
+            }
+//            .navigationDestination(for: Coordinator) {
+//                $0.start()
 //            }
         }
         

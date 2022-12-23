@@ -1,7 +1,9 @@
 import SwiftUI
 
-protocol Coordinator: Identifiable, Hashable {
-    func start() -> any View
+protocol Coordinator: Identifiable, Hashable, AnyObject {
+    associatedtype Body: View
+    func start() -> Body
+    //var body: Body { get }
 }
 
 extension Coordinator {

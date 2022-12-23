@@ -1,8 +1,8 @@
-import UIKit
+import SwiftUI
 
 final class FontManager {
     
-    static let manropeRegular14 = UIFont(name: "Manrope-Regular", size: 14) ?? UIFont.systemFont(ofSize: 14)
-    static let manropeBold14 = UIFont(name: "Manrope-Bold", size: 14) ?? UIFont.systemFont(ofSize: 14, weight: .bold)
+    static let manropeRegular14 = Font.custom("Manrope-Regular", size: 14)
+    static let manropeBold14 = Font.custom("Manrope-Bold", size: 14)
     
 }

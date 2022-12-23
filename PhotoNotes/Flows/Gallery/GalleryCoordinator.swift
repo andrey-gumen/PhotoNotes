@@ -2,20 +2,24 @@ import Combine
 import CoreData
 import SwiftUI
 
-final class GalleryCoordinator: Coordinator, ObservableObject {
+final class GalleryCoordinator: Coordinator {
 
     let id = UUID()
-    @Published var managedContext: NSManagedObjectContext
+    let managedContext: NSManagedObjectContext
 
     private let cancellables: Set<AnyCancellable> = []
 
     init(_ managedContext: NSManagedObjectContext) {
         self.managedContext = managedContext
     }
-
-    func start() -> any View {
-        return ContentView()
+    
+    func start() -> some View {
+        return body
+    }
+    
+    var body: some View {
+        ContentView()
             .environment(\.managedObjectContext, managedContext)
     }
-
+    
 }
