@@ -11,13 +11,12 @@ final class AppCoordinator: ObservableObject {
     
     init(_ managedContext: NSManagedObjectContext) {
         self.managedContext = managedContext
-        
-        activateGalleryFlow()
     }
     
-    private func activateGalleryFlow() {
+    func start() -> some View {
         let coordinator = GalleryCoordinator(managedContext)
         coordinators.append(coordinator)
+        return coordinator.start()
     }
 
 }

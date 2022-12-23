@@ -29,7 +29,6 @@ struct PersistenceController {
     // MARK: runtime
     static let shared = PersistenceController()
     
-    
     var managedContext: NSManagedObjectContext {
         container.viewContext
     }
