@@ -140,7 +140,6 @@
 		A16E77BD294F97DB0067C66E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				A114E2B12955D0CB003DDC02 /* Fonts */,
 				A133781B294FA9CF0075A289 /* Date+Extensions.swift */,
 				A1337822294FE1B90075A289 /* ColorScheme.swift */,
 				A1337823294FE1B90075A289 /* TrimmedWrapper.swift */,
@@ -171,6 +170,7 @@
 		A16E77C0294F980E0067C66E /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A114E2B12955D0CB003DDC02 /* Fonts */,
 				A13428AA2945FB1900BFA87C /* Assets.xcassets */,
 				A13428AC2945FB1900BFA87C /* Preview Content */,
 			);
