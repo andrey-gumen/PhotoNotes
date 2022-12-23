@@ -5,21 +5,19 @@ import SwiftUI
 final class AppCoordinator: ObservableObject {
 
     @Published var managedContext: NSManagedObjectContext
+    //@Published var coordinators: [any Coordinator] = []
     
-    private let coordinators: [AnyObject] = []
     private let cancellables: Set<AnyCancellable> = []
     
     init(_ managedContext: NSManagedObjectContext) {
         self.managedContext = managedContext
+        
+        activateGalleryFlow()
     }
     
-    func start() -> some View {
-        showGalleryFlow()
-    }
-    
-    private func showGalleryFlow() -> some View {
-        return ContentView()
-            .environment(\.managedObjectContext, managedContext)
+    private func activateGalleryFlow() {
+        //let coordinator = GalleryCoordinator(managedContext)
+        //coordinators.append(coordinator)
     }
 
 }

@@ -6,8 +6,8 @@ struct PhotoNotesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            let rootCoordinator = AppCoordinator(persistenceController.container.viewContext)
-            AppCoordinatorView(object: rootCoordinator)
+//            let rootCoordinator = AppCoordinator(persistenceController.container.viewContext)
+//            NavigationView(coordinator: rootCoordinator)
         }
     }
 }
