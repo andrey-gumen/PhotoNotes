@@ -11,14 +11,16 @@
 		A114E2AD2955D034003DDC02 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AA2955D034003DDC02 /* Manrope-Regular.ttf */; };
 		A114E2AE2955D034003DDC02 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AB2955D034003DDC02 /* Manrope-Light.ttf */; };
 		A114E2AF2955D034003DDC02 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AC2955D034003DDC02 /* Manrope-Bold.ttf */; };
+		A124C4632955E897009C4BA3 /* GalleryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124C4622955E897009C4BA3 /* GalleryCoordinator.swift */; };
+		A124C46A2955E8E6009C4BA3 /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124C4672955E8E6009C4BA3 /* CoordinatorProtocol.swift */; };
+		A124C46C2955E93E009C4BA3 /* AppNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124C46B2955E93E009C4BA3 /* AppNavigationView.swift */; };
+		A124C46E2955E98D009C4BA3 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A124C46D2955E98D009C4BA3 /* AppCoordinator.swift */; };
 		A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337819294FA68D0075A289 /* PhotoNote.swift */; };
 		A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133781B294FA9CF0075A289 /* Date+Extensions.swift */; };
 		A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A133781D294FACDF0075A289 /* PhotoNotes.xcdatamodeld */; };
 		A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337820294FCCC90075A289 /* PersistenceErrors.swift */; };
 		A1337824294FE1B90075A289 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337822294FE1B90075A289 /* ColorScheme.swift */; };
 		A1337825294FE1B90075A289 /* TrimmedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337823294FE1B90075A289 /* TrimmedWrapper.swift */; };
-		A133782829511E750075A289 /* AppCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133782729511E750075A289 /* AppCoordinatorView.swift */; };
-		A13378312951208C0075A289 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13378302951208C0075A289 /* AppCoordinator.swift */; };
 		A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */; };
 		A13428A92945FB1800BFA87C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A82945FB1800BFA87C /* ContentView.swift */; };
 		A13428AB2945FB1900BFA87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13428AA2945FB1900BFA87C /* Assets.xcassets */; };
@@ -32,14 +34,16 @@
 		A114E2AB2955D034003DDC02 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
 		A114E2AC2955D034003DDC02 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
 		A114E2B02955D05D003DDC02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		A124C4622955E897009C4BA3 /* GalleryCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryCoordinator.swift; sourceTree = "<group>"; };
+		A124C4672955E8E6009C4BA3 /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		A124C46B2955E93E009C4BA3 /* AppNavigationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppNavigationView.swift; sourceTree = "<group>"; };
+		A124C46D2955E98D009C4BA3 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A1337819294FA68D0075A289 /* PhotoNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoNote.swift; sourceTree = "<group>"; };
 		A133781B294FA9CF0075A289 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A133781E294FACDF0075A289 /* PhotoNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoNotes.xcdatamodel; sourceTree = "<group>"; };
 		A1337820294FCCC90075A289 /* PersistenceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceErrors.swift; sourceTree = "<group>"; };
 		A1337822294FE1B90075A289 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		A1337823294FE1B90075A289 /* TrimmedWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimmedWrapper.swift; sourceTree = "<group>"; };
-		A133782729511E750075A289 /* AppCoordinatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorView.swift; sourceTree = "<group>"; };
-		A13378302951208C0075A289 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A13428A32945FB1800BFA87C /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNotesApp.swift; sourceTree = "<group>"; };
 		A13428A82945FB1800BFA87C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,11 +82,19 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		A124C4612955E897009C4BA3 /* GalleryScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A13428A82945FB1800BFA87C /* ContentView.swift */,
+			);
+			path = GalleryScreen;
+			sourceTree = "<group>";
+		};
 		A133782629511E540075A289 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				A13378302951208C0075A289 /* AppCoordinator.swift */,
-				A133782729511E750075A289 /* AppCoordinatorView.swift */,
+				A124C46D2955E98D009C4BA3 /* AppCoordinator.swift */,
+				A124C46B2955E93E009C4BA3 /* AppNavigationView.swift */,
 				A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */,
 			);
 			path = App;
@@ -139,6 +151,7 @@
 		A16E77BE294F97E50067C66E /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				A124C4672955E8E6009C4BA3 /* CoordinatorProtocol.swift */,
 				A16E77C1294F98350067C66E /* Gallery */,
 			);
 			path = Flows;
@@ -167,7 +180,8 @@
 		A16E77C1294F98350067C66E /* Gallery */ = {
 			isa = PBXGroup;
 			children = (
-				A13428A82945FB1800BFA87C /* ContentView.swift */,
+				A124C4622955E897009C4BA3 /* GalleryCoordinator.swift */,
+				A124C4612955E897009C4BA3 /* GalleryScreen */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -245,15 +259,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A13378312951208C0075A289 /* AppCoordinator.swift in Sources */,
+				A124C46A2955E8E6009C4BA3 /* CoordinatorProtocol.swift in Sources */,
 				A1337824294FE1B90075A289 /* ColorScheme.swift in Sources */,
 				A1337825294FE1B90075A289 /* TrimmedWrapper.swift in Sources */,
-				A133782829511E750075A289 /* AppCoordinatorView.swift in Sources */,
 				A13428B02945FB1900BFA87C /* Persistence.swift in Sources */,
 				A13428A92945FB1800BFA87C /* ContentView.swift in Sources */,
 				A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */,
+				A124C46E2955E98D009C4BA3 /* AppCoordinator.swift in Sources */,
 				A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */,
+				A124C4632955E897009C4BA3 /* GalleryCoordinator.swift in Sources */,
 				A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */,
+				A124C46C2955E93E009C4BA3 /* AppNavigationView.swift in Sources */,
 				A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */,
 				A114E2A82955CEED003DDC02 /* FontManager.swift in Sources */,
 				A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */,

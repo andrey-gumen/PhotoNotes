@@ -5,7 +5,7 @@ import SwiftUI
 final class AppCoordinator: ObservableObject {
 
     @Published var managedContext: NSManagedObjectContext
-    //@Published var coordinators: [any Coordinator] = []
+    @Published var coordinators: [any Coordinator] = []
     
     private let cancellables: Set<AnyCancellable> = []
     
@@ -16,8 +16,8 @@ final class AppCoordinator: ObservableObject {
     }
     
     private func activateGalleryFlow() {
-        //let coordinator = GalleryCoordinator(managedContext)
-        //coordinators.append(coordinator)
+        let coordinator = GalleryCoordinator(managedContext)
+        coordinators.append(coordinator)
     }
 
 }
