@@ -13,6 +13,8 @@
 		A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337820294FCCC90075A289 /* PersistenceErrors.swift */; };
 		A1337824294FE1B90075A289 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337822294FE1B90075A289 /* ColorScheme.swift */; };
 		A1337825294FE1B90075A289 /* TrimmedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337823294FE1B90075A289 /* TrimmedWrapper.swift */; };
+		A133782829511E750075A289 /* AppCoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133782729511E750075A289 /* AppCoordinatorView.swift */; };
+		A13378312951208C0075A289 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13378302951208C0075A289 /* AppCoordinator.swift */; };
 		A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */; };
 		A13428A92945FB1800BFA87C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A13428A82945FB1800BFA87C /* ContentView.swift */; };
 		A13428AB2945FB1900BFA87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A13428AA2945FB1900BFA87C /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		A1337820294FCCC90075A289 /* PersistenceErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceErrors.swift; sourceTree = "<group>"; };
 		A1337822294FE1B90075A289 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		A1337823294FE1B90075A289 /* TrimmedWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimmedWrapper.swift; sourceTree = "<group>"; };
+		A133782729511E750075A289 /* AppCoordinatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinatorView.swift; sourceTree = "<group>"; };
+		A13378302951208C0075A289 /* AppCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A13428A32945FB1800BFA87C /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoNotesApp.swift; sourceTree = "<group>"; };
 		A13428A82945FB1800BFA87C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +50,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A133782629511E540075A289 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A13378302951208C0075A289 /* AppCoordinator.swift */,
+				A133782729511E750075A289 /* AppCoordinatorView.swift */,
+				A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		A134289A2945FB1800BFA87C = {
 			isa = PBXGroup;
 			children = (
@@ -65,11 +79,11 @@
 		A13428A52945FB1800BFA87C /* PhotoNotes */ = {
 			isa = PBXGroup;
 			children = (
+				A133782629511E540075A289 /* App */,
 				A16E77C0294F980E0067C66E /* Assets */,
 				A16E77BF294F97F10067C66E /* DB */,
 				A16E77BE294F97E50067C66E /* Flows */,
 				A16E77BD294F97DB0067C66E /* Helpers */,
-				A13428A62945FB1800BFA87C /* PhotoNotesApp.swift */,
 			);
 			path = PhotoNotes;
 			sourceTree = "<group>";
@@ -198,8 +212,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A13378312951208C0075A289 /* AppCoordinator.swift in Sources */,
 				A1337824294FE1B90075A289 /* ColorScheme.swift in Sources */,
 				A1337825294FE1B90075A289 /* TrimmedWrapper.swift in Sources */,
+				A133782829511E750075A289 /* AppCoordinatorView.swift in Sources */,
 				A13428B02945FB1900BFA87C /* Persistence.swift in Sources */,
 				A13428A92945FB1800BFA87C /* ContentView.swift in Sources */,
 				A1337821294FCCC90075A289 /* PersistenceErrors.swift in Sources */,
