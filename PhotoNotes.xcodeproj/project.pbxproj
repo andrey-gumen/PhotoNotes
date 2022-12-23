@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A114E2A82955CEED003DDC02 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A114E2A72955CEED003DDC02 /* FontManager.swift */; };
+		A114E2AD2955D034003DDC02 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AA2955D034003DDC02 /* Manrope-Regular.ttf */; };
+		A114E2AE2955D034003DDC02 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AB2955D034003DDC02 /* Manrope-Light.ttf */; };
+		A114E2AF2955D034003DDC02 /* Manrope-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A114E2AC2955D034003DDC02 /* Manrope-Bold.ttf */; };
 		A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1337819294FA68D0075A289 /* PhotoNote.swift */; };
 		A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A133781B294FA9CF0075A289 /* Date+Extensions.swift */; };
 		A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A133781D294FACDF0075A289 /* PhotoNotes.xcdatamodeld */; };
@@ -23,6 +27,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A114E2A72955CEED003DDC02 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
+		A114E2AA2955D034003DDC02 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
+		A114E2AB2955D034003DDC02 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
+		A114E2AC2955D034003DDC02 /* Manrope-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Bold.ttf"; sourceTree = "<group>"; };
+		A114E2B02955D05D003DDC02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A1337819294FA68D0075A289 /* PhotoNote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoNote.swift; sourceTree = "<group>"; };
 		A133781B294FA9CF0075A289 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A133781E294FACDF0075A289 /* PhotoNotes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PhotoNotes.xcdatamodel; sourceTree = "<group>"; };
@@ -50,6 +59,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A114E2A92955D034003DDC02 /* Manrope */ = {
+			isa = PBXGroup;
+			children = (
+				A114E2AA2955D034003DDC02 /* Manrope-Regular.ttf */,
+				A114E2AB2955D034003DDC02 /* Manrope-Light.ttf */,
+				A114E2AC2955D034003DDC02 /* Manrope-Bold.ttf */,
+			);
+			path = Manrope;
+			sourceTree = "<group>";
+		};
+		A114E2B12955D0CB003DDC02 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A114E2A92955D034003DDC02 /* Manrope */,
+				A114E2A72955CEED003DDC02 /* FontManager.swift */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		A133782629511E540075A289 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +107,7 @@
 		A13428A52945FB1800BFA87C /* PhotoNotes */ = {
 			isa = PBXGroup;
 			children = (
+				A114E2B02955D05D003DDC02 /* Info.plist */,
 				A133782629511E540075A289 /* App */,
 				A16E77C0294F980E0067C66E /* Assets */,
 				A16E77BF294F97F10067C66E /* DB */,
@@ -99,6 +128,7 @@
 		A16E77BD294F97DB0067C66E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A114E2B12955D0CB003DDC02 /* Fonts */,
 				A133781B294FA9CF0075A289 /* Date+Extensions.swift */,
 				A1337822294FE1B90075A289 /* ColorScheme.swift */,
 				A1337823294FE1B90075A289 /* TrimmedWrapper.swift */,
@@ -200,8 +230,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A114E2AE2955D034003DDC02 /* Manrope-Light.ttf in Resources */,
+				A114E2AF2955D034003DDC02 /* Manrope-Bold.ttf in Resources */,
 				A13428AE2945FB1900BFA87C /* Preview Assets.xcassets in Resources */,
 				A13428AB2945FB1900BFA87C /* Assets.xcassets in Resources */,
+				A114E2AD2955D034003DDC02 /* Manrope-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +255,7 @@
 				A133781F294FACDF0075A289 /* PhotoNotes.xcdatamodeld in Sources */,
 				A133781A294FA68D0075A289 /* PhotoNote.swift in Sources */,
 				A13428A72945FB1800BFA87C /* PhotoNotesApp.swift in Sources */,
+				A114E2A82955CEED003DDC02 /* FontManager.swift in Sources */,
 				A133781C294FA9CF0075A289 /* Date+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -354,6 +388,7 @@
 				DEVELOPMENT_TEAM = D8543K9P2C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoNotes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,6 +418,7 @@
 				DEVELOPMENT_TEAM = D8543K9P2C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PhotoNotes/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
