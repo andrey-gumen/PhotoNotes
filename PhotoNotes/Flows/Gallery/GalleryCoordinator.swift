@@ -20,35 +20,29 @@ final class GalleryCoordinator {
         let viewModel = GalleryViewModel(persistenceController)
         let content = GalleryGridView(viewModel: viewModel)
         
-//        viewModel.outputs.addNoteSubject
-//            .sink { [weak self] in self?.showAddNoteScreen(); print("add note") }
-//            .store(in: &cancellables)
-        
         viewModel.outputs.addNoteSubject
-            .sink(
-                receiveCompletion: { completion in
-                    // Called once, when the publisher was completed.
-                    print("receiveCompletion: \(completion)")
-                },
-                receiveValue: { value in
-                    // Can be called multiple times, each time that a
-                    // new value was emitted by the publisher.
-                    print("receiveValue 2: \(value)")
-                }
-            )
+            .sink { [weak self] in self?.showAddNoteScreen() }
             .store(in: &cancellables)
         
         present(content)
     }
     
+    private func showAddNoteScreen() {
+        print(#function)
+    }
+    
+    private func showDetailNoteScreen(note: PhotoNote) {
+        let viewModel = DetailNoteViewModel(persistenceController, note)
+        let content = DetailNoteView(viewModel: viewModel)
+        
+        present(content)
+    }
+    
+    // MARK: helpers
+    
     private func present(_ content: some View) {
         let view = UIHostingController(rootView: content)
         navigationController.pushViewController(view, animated: true)
-    }
-    
-    private func showAddNoteScreen() {
-//        let viewModel = DetailNoteViewModel(persistenceController)
-//        DetailNoteView(viewModel: viewModel)
     }
     
 }

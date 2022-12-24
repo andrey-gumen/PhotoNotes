@@ -10,7 +10,7 @@ final class DetailNoteViewModel: ObservableObject {
     private let persistenceController: PersistenceController
     private var cancellables: Set<AnyCancellable> = []
     
-    init(_ persistenceController: PersistenceController, note: PhotoNote? = nil) {
+    init(_ persistenceController: PersistenceController, _ note: PhotoNote?) {
         self.persistenceController = persistenceController
         self.note = note
        
