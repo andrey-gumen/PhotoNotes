@@ -82,6 +82,21 @@ struct PersistenceController {
             return .failure(PersistenceError.PhotoNoteEntityCreation)
         }
     }
+    
+    func delete(offset: Int) -> Result<Void, Error> {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
+
+        do {
+            let objects = try managedContext.fetch(fetchRequest)
+            let object = objects[offset]
+            try delete(object: object)
+            
+            try managedContext.save()
+            return .success(Void())
+        } catch let error as NSError {
+            return .failure(error)
+        }
+    }
 
     func delete(offsets: IndexSet) -> Result<Void, Error> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
@@ -89,10 +104,7 @@ struct PersistenceController {
         do {
             let objects = try managedContext.fetch(fetchRequest)
             try offsets.map { objects[$0] }.forEach {
-                if let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: $0) {
-                    FileManager.default.removeItemFromDocumentDirectory(url: imageUrl)
-                }
-                managedContext.delete($0)
+                try delete(object: $0)
             }
 
             try managedContext.save()
@@ -100,6 +112,13 @@ struct PersistenceController {
         } catch let error as NSError {
             return .failure(error)
         }
+    }
+    
+    private func delete(object: NSManagedObject) throws {
+        if let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: object) {
+            FileManager.default.removeItemFromDocumentDirectory(url: imageUrl)
+        }
+        managedContext.delete(object)
     }
 
     func getNotes() -> Result<[PhotoNote], Error> {

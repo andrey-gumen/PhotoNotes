@@ -50,13 +50,14 @@ struct GalleryGridView: View {
     private var grid: some View {
         ScrollView {
             LazyVGrid(columns: gridColumns) {
-                ForEach(viewModel.notes) { note in
+                ForEach(Array(viewModel.notes.enumerated()), id: \.offset) { index, note in
                     GeometryReader { geo in
                         NavigationLink {
                             DetailNoteView(item: note)
                         } label: {
                             NoteGridCell(size: geo.size.width, item: note)
                         }
+                        .disabled(isEditing)
                     }
                     .cornerRadius(8.0)
                     .aspectRatio(1, contentMode: .fit)
@@ -64,7 +65,7 @@ struct GalleryGridView: View {
                         if isEditing {
                             Button {
                                 withAnimation {
-                                    //dataModel.removeItem(item)
+                                    viewModel.outputs.deleteNoteSubject.send(index)
                                 }
                             } label: {
                                 let font = gridColumns.count >= 3 ? Font.title3

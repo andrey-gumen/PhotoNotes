@@ -20,8 +20,8 @@ final class GalleryViewModel: ObservableObject {
             .sink { [weak self] in self?.addNote() }
             .store(in: &cancellables)
         
-        outputs.deleteNotesSubject
-            .sink { [weak self] offsets in self?.deleteNotes(offsets: offsets) }
+        outputs.deleteNoteSubject
+            .sink { [weak self] index in self?.deleteNote(index) }
             .store(in: &cancellables)
     }
     
@@ -45,8 +45,8 @@ final class GalleryViewModel: ObservableObject {
         }
     }
     
-    private func deleteNotes(offsets: IndexSet) {
-        let result = persistenceController.delete(offsets: offsets)
+    private func deleteNote(_ index: Int) {
+        let result = persistenceController.delete(offset: index)
         
         switch result {
         case .success: reloadData()
@@ -62,7 +62,7 @@ final class GalleryViewModel: ObservableObject {
     
     struct Outputs {
         let addNoteSubject = PassthroughSubject<Void, Never>()
-        let deleteNotesSubject = PassthroughSubject<IndexSet, Never>()
+        let deleteNoteSubject = PassthroughSubject<Int, Never>()
         let showNoteSubject = PassthroughSubject<PhotoNote?, Never>()
     }
 }
