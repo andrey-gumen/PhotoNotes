@@ -4,6 +4,8 @@ import Foundation
 final class GalleryViewModel: ObservableObject {
     
     @Published var notes: [PhotoNote] = []
+    @Published var noNotes: Bool = true
+    
     let inputs = Inputs()
     var outputs = Outputs()
     
@@ -26,6 +28,7 @@ final class GalleryViewModel: ObservableObject {
         switch result {
         case .success(let notes):
             self.notes = notes
+            self.noNotes = notes.count == 0
         case .failure(let error):
             print(error)
         }

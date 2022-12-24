@@ -32,7 +32,7 @@ struct DetailNoteView_Previews: PreviewProvider {
     static var previews: some View {
         if let url = Bundle.main.url(forResource: "bobcat", withExtension: "jpg") {
             let note = PhotoNote(date: Date.now, imageUrl: url, note: "Text message")
-            let viewModel = DetailNoteViewModel(PersistenceController.preview, note: note)
+            let viewModel = DetailNoteViewModel(PersistenceController.preview, note)
             DetailNoteView(viewModel: viewModel)
         }
     }

@@ -5,7 +5,6 @@ struct GalleryGridView: View {
     @StateObject var viewModel: GalleryViewModel
 
     private static let initialColumns = 1
-    @State private var isAddingPhoto = false
     @State private var isEditing = false
 
     @State private var gridColumns = Array(repeating: GridItem(.flexible()), count: initialColumns)
@@ -21,12 +20,14 @@ struct GalleryGridView: View {
                     .padding()
             }
             grid
+            if viewModel.noNotes {
+                Text("no notes")
+                        .font(Font.callout)
+                        .opacity(0.4)
+            }
         }
         .navigationBarTitle("Gallery")
         .navigationBarTitleDisplayMode(.inline)
-//        .sheet(isPresented: $isAddingPhoto) {
-//            PhotoPicker()
-//        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(isEditing ? "Done" : "Edit") {
@@ -36,7 +37,6 @@ struct GalleryGridView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     viewModel.outputs.addNoteSubject.send()
-                    isAddingPhoto = true
                 } label: {
                     Image(systemName: "plus")
                 }
