@@ -1,5 +1,6 @@
 import Combine
 import SwiftUI
+import UIKit
 
 final class GalleryCoordinator {
     
@@ -40,9 +41,24 @@ final class GalleryCoordinator {
     
     // MARK: helpers
     
-    private func present(_ content: some View) {
-        let view = UIHostingController(rootView: content)
-        navigationController.pushViewController(view, animated: true)
+    private enum NavigationTranisitionStyle {
+        case push
+        case sheet
+        case fullScreen
+    }
+    
+    private func present(_ content: some View, transition: NavigationTranisitionStyle = .push, animated: Bool = true) {
+        let viewController = UIHostingController(rootView: content)
+        switch transition {
+        case .push:
+            navigationController.pushViewController(viewController, animated: animated)
+        case .sheet:
+            viewController.modalPresentationStyle = .formSheet
+            navigationController.present(viewController, animated: animated)
+        case .fullScreen:
+            viewController.modalPresentationStyle = .fullScreen
+            navigationController.present(viewController, animated: animated)
+        }
     }
     
 }
