@@ -11,7 +11,9 @@ struct NoteGridCell: View {
                     .resizable()
                     .scaledToFill()
             } placeholder: {
-                ProgressView()
+                if item.imageUrl != nil {
+                    ProgressView()
+                }
             }
             .frame(width: size, height: size)
         }

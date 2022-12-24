@@ -4,13 +4,13 @@ import UIKit
 
 final class DetailNoteViewModel: ObservableObject {
     
-    @Published var note: PhotoNote
+    @Published var note: PhotoNote?
     let outputs = Outputs()
     
     private let persistenceController: PersistenceController
     private var cancellables: Set<AnyCancellable> = []
     
-    init(_ persistenceController: PersistenceController, note: PhotoNote) {
+    init(_ persistenceController: PersistenceController, note: PhotoNote? = nil) {
         self.persistenceController = persistenceController
         self.note = note
        

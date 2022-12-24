@@ -24,9 +24,9 @@ struct GalleryGridView: View {
         }
         .navigationBarTitle("Gallery")
         .navigationBarTitleDisplayMode(.inline)
-        .sheet(isPresented: $isAddingPhoto) {
-            PhotoPicker()
-        }
+//        .sheet(isPresented: $isAddingPhoto) {
+//            PhotoPicker()
+//        }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(isEditing ? "Done" : "Edit") {
@@ -35,6 +35,7 @@ struct GalleryGridView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
+                    viewModel.outputs.addNoteSubject.send()
                     isAddingPhoto = true
                 } label: {
                     Image(systemName: "plus")
@@ -53,7 +54,7 @@ struct GalleryGridView: View {
                 ForEach(Array(viewModel.notes.enumerated()), id: \.offset) { index, note in
                     GeometryReader { geo in
                         NavigationLink {
-                            DetailNoteView(item: note)
+                            //DetailNoteView(item: note)
                         } label: {
                             NoteGridCell(size: geo.size.width, item: note)
                         }
