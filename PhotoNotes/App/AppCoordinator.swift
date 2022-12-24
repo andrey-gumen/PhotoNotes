@@ -2,18 +2,19 @@ import SwiftUI
 
 final class AppCoordinator: ObservableObject {
 
-    @Published var persistenceController: PersistenceController
-    private var coordinators: [any NavigationCoordinator] = []
+    private var persistenceController: PersistenceController
+    private let navigationController: UINavigationController
+    private var coordinators: [AnyObject] = []
     
-    init(_ persistenceController: PersistenceController) {
+    init(_ persistenceController: PersistenceController, navigationController: UINavigationController) {
         self.persistenceController = persistenceController
-        activateGalleryFlow()
+        self.navigationController = navigationController
     }
     
-    private func activateGalleryFlow() {
-        let coordinator = GalleryCoordinator(persistenceController)
+    func start() {
+        let coordinator = GalleryCoordinator(persistenceController, navigationController)
+        coordinator.start()
         coordinators.append(coordinator)
-        return coordinator.start()
     }
-
+    
 }

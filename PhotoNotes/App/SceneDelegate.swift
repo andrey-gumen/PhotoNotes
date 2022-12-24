@@ -15,11 +15,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.rootViewController = rootNavigationController
         window?.makeKeyAndVisible()
         
-        rootCoordinator = AppCoordinator(PersistenceController.shared.managedContext)
-        let contentView = rootCoordinator?.start()
-        let view = UIHostingController(rootView: contentView)
-        
-        rootNavigationController.pushViewController(view, animated: true)
+        rootCoordinator = AppCoordinator(PersistenceController.shared, navigationController: rootNavigationController)
+        rootCoordinator?.start()
     }
     
 }

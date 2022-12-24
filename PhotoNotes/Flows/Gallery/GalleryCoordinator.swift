@@ -1,25 +1,25 @@
 import Combine
 import SwiftUI
 
-final class GalleryCoordinator: NavigationCoordinator {
-
+final class GalleryCoordinator {
+    
     private let persistenceController: PersistenceController
+    private let navigationController: UINavigationController
     private var cancellables: Set<AnyCancellable> = []
     
-    //var viewModel: GalleryViewModel?
-
-    init(_ persistenceController: PersistenceController) {
+    init(_ persistenceController: PersistenceController, _ navigationController: UINavigationController) {
         self.persistenceController = persistenceController
-        
-        //viewModel = GalleryViewModel(persistenceController)
+        self.navigationController = navigationController
     }
     
     deinit{
         print("deinit GalleryCoordinator")
     }
     
-    func start() -> some View {
+    func start() {
         let viewModel = GalleryViewModel(persistenceController)
+        let content = GalleryGridView(viewModel: viewModel)
+        
 //        viewModel.outputs.addNoteSubject
 //            .sink { [weak self] in self?.showAddNoteScreen(); print("add note") }
 //            .store(in: &cancellables)
@@ -38,12 +38,17 @@ final class GalleryCoordinator: NavigationCoordinator {
             )
             .store(in: &cancellables)
         
-        return GalleryGridView(viewModel: viewModel)
+        present(content)
+    }
+    
+    private func present(_ content: some View) {
+        let view = UIHostingController(rootView: content)
+        navigationController.pushViewController(view, animated: true)
     }
     
     private func showAddNoteScreen() {
-        let viewModel = DetailNoteViewModel(persistenceController)
-        DetailNoteView(viewModel: viewModel)
+//        let viewModel = DetailNoteViewModel(persistenceController)
+//        DetailNoteView(viewModel: viewModel)
     }
     
 }
