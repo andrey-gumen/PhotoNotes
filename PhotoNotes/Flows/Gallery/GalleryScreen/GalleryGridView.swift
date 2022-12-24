@@ -44,7 +44,7 @@ struct GalleryGridView: View {
             }
         }
         .onAppear {
-            viewModel.inputs.reloadDataSubject.send()
+            viewModel.inputs.becameActiveSubject.send()
         }
     }
     
@@ -90,7 +90,9 @@ struct GalleryGridView: View {
 
 struct GalleryGridView_Previews: PreviewProvider {
     static var previews: some View {
-        let viewModel = GalleryViewModel(PersistenceController.preview)
-        GalleryGridView(viewModel: viewModel)
+        NavigationStack {
+            let viewModel = GalleryViewModel(PersistenceController.preview)
+            GalleryGridView(viewModel: viewModel)
+        }
     }
 }

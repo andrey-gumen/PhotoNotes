@@ -12,26 +12,12 @@ final class GalleryViewModel: ObservableObject {
     
     init(_ persistenceController: PersistenceController) {
         self.persistenceController = persistenceController
-        inputs.reloadDataSubject
+        inputs.becameActiveSubject
             .sink { [weak self] in self?.reloadData() }
             .store(in: &cancellables)
         
         outputs.deleteNoteSubject
             .sink { [weak self] index in self?.deleteNote(index) }
-            .store(in: &cancellables)
-        
-        outputs.addNoteSubject
-            .sink(
-                receiveCompletion: { completion in
-                    // Called once, when the publisher was completed.
-                    print("receiveCompletion: \(completion)")
-                },
-                receiveValue: { value in
-                    // Can be called multiple times, each time that a
-                    // new value was emitted by the publisher.
-                    print("receiveValue: \(value)")
-                }
-            )
             .store(in: &cancellables)
     }
     
@@ -45,16 +31,6 @@ final class GalleryViewModel: ObservableObject {
         }
     }
     
-//    private func addNote() {
-//        let note = PhotoNote(date: Date.now)
-//        let result = persistenceController.add(note: note)
-//
-//        switch result {
-//        case .success: reloadData()
-//        case .failure(let error):print(error)
-//        }
-//    }
-    
     private func deleteNote(_ index: Int) {
         let result = persistenceController.delete(offset: index)
         
@@ -67,7 +43,7 @@ final class GalleryViewModel: ObservableObject {
     // MARK: Inputs / Outputs types
     
     struct Inputs {
-        let reloadDataSubject = PassthroughSubject<Void, Never>()
+        let becameActiveSubject = PassthroughSubject<Void, Never>()
     }
     
     struct Outputs {
