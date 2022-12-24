@@ -251,8 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				A192F8D429573BDD00E47202 /* GalleryViewModel.swift */,
-				A192F8D529573BDD00E47202 /* ColumnStepper.swift */,
 				A192F8D629573BDD00E47202 /* GalleryGridView.swift */,
+				A192F8D529573BDD00E47202 /* ColumnStepper.swift */,
 				A192F8D729573BDD00E47202 /* NoteGridCell.swift */,
 			);
 			path = GalleryScreen;
