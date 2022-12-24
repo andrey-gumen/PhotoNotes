@@ -25,5 +25,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Full use of PhotoNotes requires access to the camera.</string>
 </dict>
 </plist>

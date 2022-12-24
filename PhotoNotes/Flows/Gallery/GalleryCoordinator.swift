@@ -1,4 +1,5 @@
 import Combine
+import _PhotosUI_SwiftUI
 import SwiftUI
 import UIKit
 
@@ -29,7 +30,8 @@ final class GalleryCoordinator {
     }
     
     private func showAddNoteScreen() {
-        print(#function)
+        let content = PhotoPicker()
+        present(content, transition: .sheet)
     }
     
     private func showDetailNoteScreen(note: PhotoNote) {
@@ -47,17 +49,17 @@ final class GalleryCoordinator {
         case fullScreen
     }
     
-    private func present(_ content: some View, transition: NavigationTranisitionStyle = .push, animated: Bool = true) {
+    private func present(_ content: some View, transition: NavigationTranisitionStyle = .push, animated: Bool = true, completion: (() -> Void)? = nil) {
         let viewController = UIHostingController(rootView: content)
         switch transition {
         case .push:
             navigationController.pushViewController(viewController, animated: animated)
         case .sheet:
             viewController.modalPresentationStyle = .formSheet
-            navigationController.present(viewController, animated: animated)
+            navigationController.present(viewController, animated: animated, completion: completion)
         case .fullScreen:
             viewController.modalPresentationStyle = .fullScreen
-            navigationController.present(viewController, animated: animated)
+            navigationController.present(viewController, animated: animated, completion: completion)
         }
     }
     

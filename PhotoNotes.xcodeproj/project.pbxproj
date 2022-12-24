@@ -33,7 +33,7 @@
 		A192F90B29573BDD00E47202 /* NoteGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8D729573BDD00E47202 /* NoteGridCell.swift */; };
 		A192F90C29573BDD00E47202 /* DetailNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8D929573BDD00E47202 /* DetailNoteView.swift */; };
 		A192F90D29573BDD00E47202 /* DetailNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8DA29573BDD00E47202 /* DetailNoteViewModel.swift */; };
-		A192F90E29573BDD00E47202 /* PhotoPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8DB29573BDD00E47202 /* PhotoPicker.swift */; };
+		A192F90E29573BDD00E47202 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8DB29573BDD00E47202 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,7 +86,7 @@
 		A192F8D729573BDD00E47202 /* NoteGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteGridCell.swift; sourceTree = "<group>"; };
 		A192F8D929573BDD00E47202 /* DetailNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNoteView.swift; sourceTree = "<group>"; };
 		A192F8DA29573BDD00E47202 /* DetailNoteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailNoteViewModel.swift; sourceTree = "<group>"; };
-		A192F8DB29573BDD00E47202 /* PhotoPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPicker.swift; sourceTree = "<group>"; };
+		A192F8DB29573BDD00E47202 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,7 +263,7 @@
 			children = (
 				A192F8D929573BDD00E47202 /* DetailNoteView.swift */,
 				A192F8DA29573BDD00E47202 /* DetailNoteViewModel.swift */,
-				A192F8DB29573BDD00E47202 /* PhotoPicker.swift */,
+				A192F8DB29573BDD00E47202 /* ImagePicker.swift */,
 			);
 			path = NoteScreen;
 			sourceTree = "<group>";
@@ -356,7 +356,7 @@
 				A192F8E129573BDD00E47202 /* AppCoordinator.swift in Sources */,
 				A192F90B29573BDD00E47202 /* NoteGridCell.swift in Sources */,
 				A192F8E429573BDD00E47202 /* AppDelegate.swift in Sources */,
-				A192F90E29573BDD00E47202 /* PhotoPicker.swift in Sources */,
+				A192F90E29573BDD00E47202 /* ImagePicker.swift in Sources */,
 				A192F8DD29573BDD00E47202 /* ColorScheme.swift in Sources */,
 				A192F90329573BDD00E47202 /* FontManager.swift in Sources */,
 				A192F8DF29573BDD00E47202 /* FileManagerExtensions.swift in Sources */,
