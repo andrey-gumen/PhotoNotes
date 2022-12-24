@@ -19,28 +19,7 @@
 		A192F8E829573BDD00E47202 /* PhotoNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8AB29573BDD00E47202 /* PhotoNote.swift */; };
 		A192F8E929573BDD00E47202 /* PersistenceErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8AC29573BDD00E47202 /* PersistenceErrors.swift */; };
 		A192F8EA29573BDD00E47202 /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A192F8AD29573BDD00E47202 /* PhotoNotes.xcdatamodeld */; };
-		A192F8EB29573BDD00E47202 /* groundSquirrel.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B129573BDD00E47202 /* groundSquirrel.jpg */; };
-		A192F8EC29573BDD00E47202 /* yellowBelliedMarmot.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B229573BDD00E47202 /* yellowBelliedMarmot.jpg */; };
-		A192F8ED29573BDD00E47202 /* bullTuleElkAndTwoFemales.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B329573BDD00E47202 /* bullTuleElkAndTwoFemales.jpg */; };
-		A192F8EE29573BDD00E47202 /* soaringTheRainbow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B429573BDD00E47202 /* soaringTheRainbow.jpg */; };
-		A192F8EF29573BDD00E47202 /* harborSealPup.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B529573BDD00E47202 /* harborSealPup.jpg */; };
-		A192F8F029573BDD00E47202 /* grizzlyCubs.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B629573BDD00E47202 /* grizzlyCubs.jpg */; };
-		A192F8F129573BDD00E47202 /* redTailedHawk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B729573BDD00E47202 /* redTailedHawk.jpg */; };
-		A192F8F229573BDD00E47202 /* doubleRainbowLowerMammoth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B829573BDD00E47202 /* doubleRainbowLowerMammoth.jpg */; };
-		A192F8F329573BDD00E47202 /* newGrowthOfAntlers.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8B929573BDD00E47202 /* newGrowthOfAntlers.jpg */; };
-		A192F8F429573BDD00E47202 /* harborSeal.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BA29573BDD00E47202 /* harborSeal.jpg */; };
 		A192F8F529573BDD00E47202 /* sunriseAtGrottoGeyser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BB29573BDD00E47202 /* sunriseAtGrottoGeyser.jpg */; };
-		A192F8F629573BDD00E47202 /* owlsAtMammoth.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BC29573BDD00E47202 /* owlsAtMammoth.jpg */; };
-		A192F8F729573BDD00E47202 /* heartSpring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BD29573BDD00E47202 /* heartSpring.jpg */; };
-		A192F8F829573BDD00E47202 /* bobcat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BE29573BDD00E47202 /* bobcat.jpg */; };
-		A192F8F929573BDD00E47202 /* doubleRainbowYellowstone.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BF29573BDD00E47202 /* doubleRainbowYellowstone.jpg */; };
-		A192F8FA29573BDD00E47202 /* bullElk.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C029573BDD00E47202 /* bullElk.jpg */; };
-		A192F8FB29573BDD00E47202 /* coyoteAndBison.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C129573BDD00E47202 /* coyoteAndBison.jpg */; };
-		A192F8FC29573BDD00E47202 /* riverOtter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C229573BDD00E47202 /* riverOtter.jpg */; };
-		A192F8FD29573BDD00E47202 /* bullElkSparring.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C329573BDD00E47202 /* bullElkSparring.jpg */; };
-		A192F8FE29573BDD00E47202 /* grizzly.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C429573BDD00E47202 /* grizzly.jpg */; };
-		A192F8FF29573BDD00E47202 /* towerCreekBASIN.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C529573BDD00E47202 /* towerCreekBASIN.jpg */; };
-		A192F90029573BDD00E47202 /* rainbowAndBadlands.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C629573BDD00E47202 /* rainbowAndBadlands.jpg */; };
 		A192F90129573BDD00E47202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C729573BDD00E47202 /* Assets.xcassets */; };
 		A192F90229573BDD00E47202 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C929573BDD00E47202 /* Preview Assets.xcassets */; };
 		A192F90329573BDD00E47202 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8CB29573BDD00E47202 /* FontManager.swift */; };
@@ -347,33 +326,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A192F8EE29573BDD00E47202 /* soaringTheRainbow.jpg in Resources */,
-				A192F8EB29573BDD00E47202 /* groundSquirrel.jpg in Resources */,
-				A192F8F729573BDD00E47202 /* heartSpring.jpg in Resources */,
-				A192F8FC29573BDD00E47202 /* riverOtter.jpg in Resources */,
-				A192F8ED29573BDD00E47202 /* bullTuleElkAndTwoFemales.jpg in Resources */,
-				A192F8F829573BDD00E47202 /* bobcat.jpg in Resources */,
 				A192F90229573BDD00E47202 /* Preview Assets.xcassets in Resources */,
-				A192F8FB29573BDD00E47202 /* coyoteAndBison.jpg in Resources */,
-				A192F8FD29573BDD00E47202 /* bullElkSparring.jpg in Resources */,
-				A192F8FA29573BDD00E47202 /* bullElk.jpg in Resources */,
-				A192F8F629573BDD00E47202 /* owlsAtMammoth.jpg in Resources */,
-				A192F8F329573BDD00E47202 /* newGrowthOfAntlers.jpg in Resources */,
-				A192F8FE29573BDD00E47202 /* grizzly.jpg in Resources */,
 				A192F8F529573BDD00E47202 /* sunriseAtGrottoGeyser.jpg in Resources */,
 				A192F90429573BDD00E47202 /* Manrope-Regular.ttf in Resources */,
-				A192F8FF29573BDD00E47202 /* towerCreekBASIN.jpg in Resources */,
 				A192F90529573BDD00E47202 /* Manrope-Light.ttf in Resources */,
-				A192F8F129573BDD00E47202 /* redTailedHawk.jpg in Resources */,
-				A192F8F929573BDD00E47202 /* doubleRainbowYellowstone.jpg in Resources */,
 				A192F8E229573BDD00E47202 /* LaunchScreen.storyboard in Resources */,
-				A192F8EC29573BDD00E47202 /* yellowBelliedMarmot.jpg in Resources */,
-				A192F90029573BDD00E47202 /* rainbowAndBadlands.jpg in Resources */,
-				A192F8F429573BDD00E47202 /* harborSeal.jpg in Resources */,
-				A192F8F229573BDD00E47202 /* doubleRainbowLowerMammoth.jpg in Resources */,
-				A192F8F029573BDD00E47202 /* grizzlyCubs.jpg in Resources */,
 				A192F90629573BDD00E47202 /* Manrope-Bold.ttf in Resources */,
-				A192F8EF29573BDD00E47202 /* harborSealPup.jpg in Resources */,
 				A192F90129573BDD00E47202 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
