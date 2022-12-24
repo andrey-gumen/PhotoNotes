@@ -1,4 +1,3 @@
-import CoreData
 import SwiftUI
 
 final class AppCoordinator: ObservableObject {

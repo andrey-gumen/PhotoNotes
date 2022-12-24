@@ -8,6 +8,7 @@ struct PhotoNote: Identifiable {
     var date: Date
     
     // MARK: optional properties
+    var imageUrl: URL?
     var image: UIImage?
     var note: String?
 }

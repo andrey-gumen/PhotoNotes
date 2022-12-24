@@ -1,11 +1,8 @@
 import Combine
-import CoreData
 import SwiftUI
 
 final class GalleryCoordinator: NavigationCoordinator {
 
-    let id = UUID()
-    
     private let persistenceController: PersistenceController
     private let cancellables: Set<AnyCancellable> = []
 
@@ -15,7 +12,7 @@ final class GalleryCoordinator: NavigationCoordinator {
     
     func start() -> some View {
         let viewModel = GalleryViewModel(persistenceController)
-        return GalleryView(viewModel: viewModel)
+        return GalleryGridView(viewModel: viewModel)
     }
     
 }

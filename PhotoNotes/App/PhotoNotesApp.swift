@@ -1,8 +1,7 @@
 import SwiftUI
 
 @main
-struct PhotoNotesApp: App {
-    
+struct PhotoNotesApp: App {    
     @StateObject var rootCoordinator = AppCoordinator(PersistenceController.shared)
 
     var body: some Scene {
