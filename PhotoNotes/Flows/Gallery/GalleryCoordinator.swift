@@ -12,8 +12,10 @@ final class GalleryCoordinator: NavigationCoordinator {
         self.persistenceController = persistenceController
         
         //viewModel = GalleryViewModel(persistenceController)
-        
-        
+    }
+    
+    deinit{
+        print("deinit GalleryCoordinator")
     }
     
     func start() -> some View {
