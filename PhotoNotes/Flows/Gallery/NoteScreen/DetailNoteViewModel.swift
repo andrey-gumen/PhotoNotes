@@ -42,7 +42,8 @@ final class DetailNoteViewModel: ObservableObject {
     
     struct Outputs {
         let saveNoteSubject = PassthroughSubject<Void, Never>()
-        let pickImageSubject = PassthroughSubject<UIImage?, Never>()
+        let pickImageSubject = PassthroughSubject<Void, Never>()
+        let deleteSubject = PassthroughSubject<PhotoNote, Never>()
     }
 }
 
