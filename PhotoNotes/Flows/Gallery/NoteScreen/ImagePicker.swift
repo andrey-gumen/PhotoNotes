@@ -1,72 +1,51 @@
-import PhotosUI
+import Combine
 import SwiftUI
 
+
 struct ImagePicker: UIViewControllerRepresentable {
-    //@EnvironmentObject var dataModel: DataModel
+    @Environment(\.presentationMode) var isPresented
     
-    /// A dismiss action provided by the environment. This may be called to dismiss this view controller.
-    @Environment(\.dismiss) var dismiss
+    let selectedImageUrlsubject = PassthroughSubject<URL?, Never>()
+    var sourceType: UIImagePickerController.SourceType
     
-    init() {
+    func makeUIViewController(context: Context) -> UIImagePickerController {
+        let isSourceTypeAvailable = UIImagePickerController.isSourceTypeAvailable(UIImagePickerController.SourceType.camera)
+        print("is camera available: \(isSourceTypeAvailable)")
         
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = self.sourceType
+        imagePicker.delegate = context.coordinator
+        return imagePicker
     }
 
-    /// Creates the picker view controller that this object represents.
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> PHPickerViewController {
-        var configuration = PHPickerConfiguration(photoLibrary: PHPhotoLibrary.shared())
-        configuration.filter = .images
-        configuration.preferredAssetRepresentationMode = .current
-
-        let photoPickerViewController = PHPickerViewController(configuration: configuration)
-        photoPickerViewController.delegate = context.coordinator
-        return photoPickerViewController
-    }
-
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
+    
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
-    }
-
-    func updateUIViewController(_ uiViewController: PHPickerViewController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-        // No updates are necessary.
     }
 }
 
 // MARK: UINavigationControllerDelegate, PHPickerViewControllerDelegate
 
-final class Coordinator: NSObject, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+final class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    let parent: ImagePicker
+    let context: ImagePicker
     
-    init(_ parent: ImagePicker) {
-        self.parent = parent
+    init(_ context: ImagePicker) {
+        self.context = context
     }
     
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        parent.dismiss()
-
-        guard
-            let itemProvider = results.first?.itemProvider,
-            itemProvider.hasItemConformingToTypeIdentifier(UTType.image.identifier)
-        else { return }
-        
-        // Load a file representation of the picked item.
-        // This creates a temporary file which is then copied to the app’s document directory for persistent storage.
-        itemProvider.loadFileRepresentation(forTypeIdentifier: UTType.image.identifier) { url, error in
-            if let error = error {
-                print("Error loading file representation: \(error.localizedDescription)")
-            } else {
-                guard let url = url else { return }
-                
-                // Add the new item to the data model.
-//                    Task { @MainActor [dataModel = self.parent.dataModel] in
-//                        withAnimation {
-//                            let item = Item(url: savedUrl)
-//                            dataModel.addItem(item)
-//                        }
-//                    }
-            }
+    func imagePickerController(
+        _ picker: UIImagePickerController,
+        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
+    ) {
+        // dismiss view at the end anyway
+        defer {
+            context.isPresented.wrappedValue.dismiss()
         }
+        
+        let selectedImageUrl = info[.imageURL] as? URL
+        context.selectedImageUrlsubject.send(selectedImageUrl)
     }
 
-    
 }

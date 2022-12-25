@@ -1,5 +1,4 @@
 import Combine
-import _PhotosUI_SwiftUI
 import SwiftUI
 import UIKit
 
@@ -30,8 +29,21 @@ final class GalleryCoordinator {
     }
     
     private func showAddNoteScreen() {
-        let content = PhotoPicker()
-        present(content, transition: .sheet)
+        // show image picker
+        // and then show detail note screen to specify data
+        let sourceType = UIDevice.isSimulator
+            ? UIImagePickerController.SourceType.photoLibrary
+            : UIImagePickerController.SourceType.camera
+        let content = ImagePicker(sourceType: sourceType)
+        content.selectedImageUrlsubject
+            .sink { [weak self] url in self?.showDetailNoteScreen(imageUrl: url) }
+            .store(in: &cancellables)
+        present(content, transition: .fullScreen)
+    }
+    
+    private func showDetailNoteScreen(imageUrl: URL?) {
+        let note = PhotoNote(date: Date.now, imageUrl: imageUrl)
+        showDetailNoteScreen(note: note)
     }
     
     private func showDetailNoteScreen(note: PhotoNote) {
