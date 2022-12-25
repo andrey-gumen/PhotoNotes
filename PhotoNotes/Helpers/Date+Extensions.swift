@@ -20,10 +20,6 @@ extension Date {
         return formatter.string(from: self)
     }
     
-    static let itemFormatter: DateFormatter = {
-        return getFormatter()
-    }()
-    
     private static func getFormatter(_ format: String = "dd MMM yyyy") -> DateFormatter {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
