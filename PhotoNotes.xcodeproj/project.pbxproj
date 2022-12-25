@@ -22,7 +22,6 @@
 		A192F8EA29573BDD00E47202 /* PhotoNotes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A192F8AD29573BDD00E47202 /* PhotoNotes.xcdatamodeld */; };
 		A192F8F529573BDD00E47202 /* sunriseAtGrottoGeyser.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A192F8BB29573BDD00E47202 /* sunriseAtGrottoGeyser.jpg */; };
 		A192F90129573BDD00E47202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C729573BDD00E47202 /* Assets.xcassets */; };
-		A192F90229573BDD00E47202 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A192F8C929573BDD00E47202 /* Preview Assets.xcassets */; };
 		A192F90329573BDD00E47202 /* FontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F8CB29573BDD00E47202 /* FontManager.swift */; };
 		A192F90429573BDD00E47202 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A192F8CD29573BDD00E47202 /* Manrope-Regular.ttf */; };
 		A192F90529573BDD00E47202 /* Manrope-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A192F8CE29573BDD00E47202 /* Manrope-Light.ttf */; };
@@ -76,7 +75,6 @@
 		A192F8C529573BDD00E47202 /* towerCreekBASIN.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = towerCreekBASIN.jpg; sourceTree = "<group>"; };
 		A192F8C629573BDD00E47202 /* rainbowAndBadlands.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rainbowAndBadlands.jpg; sourceTree = "<group>"; };
 		A192F8C729573BDD00E47202 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		A192F8C929573BDD00E47202 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A192F8CB29573BDD00E47202 /* FontManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontManager.swift; sourceTree = "<group>"; };
 		A192F8CD29573BDD00E47202 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		A192F8CE29573BDD00E47202 /* Manrope-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Light.ttf"; sourceTree = "<group>"; };
@@ -170,7 +168,6 @@
 			children = (
 				A192F8B029573BDD00E47202 /* Images */,
 				A192F8C729573BDD00E47202 /* Assets.xcassets */,
-				A192F8C829573BDD00E47202 /* Preview Content */,
 				A192F8CA29573BDD00E47202 /* Fonts */,
 			);
 			path = Assets;
@@ -203,14 +200,6 @@
 				A192F8C629573BDD00E47202 /* rainbowAndBadlands.jpg */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		A192F8C829573BDD00E47202 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				A192F8C929573BDD00E47202 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		A192F8CA29573BDD00E47202 /* Fonts */ = {
@@ -329,7 +318,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A192F90229573BDD00E47202 /* Preview Assets.xcassets in Resources */,
 				A192F8F529573BDD00E47202 /* sunriseAtGrottoGeyser.jpg in Resources */,
 				A192F90429573BDD00E47202 /* Manrope-Regular.ttf in Resources */,
 				A192F90529573BDD00E47202 /* Manrope-Light.ttf in Resources */,
