@@ -9,5 +9,9 @@ struct ColorScheme {
     
     static let detailBackground = Color("detailBackground")
     static let detailForeground = Color("detailForeground")
-
+    
+    static let tintForeground = Color("tintForeground")
+    
+    static let placeholderColor = Color(UIColor.placeholderText)
+    
 }
