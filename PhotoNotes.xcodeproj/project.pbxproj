@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A136BAB72957C82400FC8023 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A136BAB62957C82400FC8023 /* UIDevice+Extensions.swift */; };
 		A192F8DD29573BDD00E47202 /* ColorScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F89D29573BDD00E47202 /* ColorScheme.swift */; };
 		A192F8DE29573BDD00E47202 /* TrimmedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F89E29573BDD00E47202 /* TrimmedWrapper.swift */; };
 		A192F8DF29573BDD00E47202 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A192F89F29573BDD00E47202 /* FileManagerExtensions.swift */; };
@@ -38,6 +39,7 @@
 
 /* Begin PBXFileReference section */
 		A124C4782956155D009C4BA3 /* PhotoNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A136BAB62957C82400FC8023 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		A192F89D29573BDD00E47202 /* ColorScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorScheme.swift; sourceTree = "<group>"; };
 		A192F89E29573BDD00E47202 /* TrimmedWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrimmedWrapper.swift; sourceTree = "<group>"; };
 		A192F89F29573BDD00E47202 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				A192F89E29573BDD00E47202 /* TrimmedWrapper.swift */,
 				A192F89F29573BDD00E47202 /* FileManagerExtensions.swift */,
 				A192F8A029573BDD00E47202 /* Date+Extensions.swift */,
+				A136BAB62957C82400FC8023 /* UIDevice+Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 				A192F90D29573BDD00E47202 /* DetailNoteViewModel.swift in Sources */,
 				A192F8E529573BDD00E47202 /* SceneDelegate.swift in Sources */,
 				A192F90929573BDD00E47202 /* ColumnStepper.swift in Sources */,
+				A136BAB72957C82400FC8023 /* UIDevice+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
