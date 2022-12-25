@@ -38,7 +38,7 @@ struct GalleryGridView: View {
                 Button {
                     viewModel.outputs.addNoteSubject.send()
                 } label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "camera.badge.ellipsis")
                 }
                 .disabled(isEditing)
             }
