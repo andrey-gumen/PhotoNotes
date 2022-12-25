@@ -7,5 +7,7 @@ struct ColorScheme {
     
     static let cellBackground = Color("cellBackground")
     
+    static let detailBackground = Color("detailBackground")
+    static let detailForeground = Color("detailForeground")
 
 }
