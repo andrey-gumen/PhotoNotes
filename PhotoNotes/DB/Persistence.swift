@@ -148,7 +148,7 @@ struct PersistenceController {
             throw PersistenceError.PhotoNoteEntityParsing
         }
         
-        let note = object.value(forKey: PhotoNoteEntityConstants.NoteKey) as? String
+        let note = object.value(forKey: PhotoNoteEntityConstants.NoteKey) as? String ?? ""
         let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: object)
         
         return PhotoNote(

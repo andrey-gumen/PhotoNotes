@@ -9,6 +9,5 @@ struct PhotoNote: Identifiable {
     
     // MARK: optional properties
     var imageUrl: URL?
-    var image: UIImage?
-    var note: String?
+    var note: String = ""
 }
