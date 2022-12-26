@@ -28,15 +28,6 @@ final class DetailNoteViewModel: ObservableObject {
         }
     }
     
-    private func deleteNotes(offsets: IndexSet) {
-        let result = persistenceController.delete(offsets: offsets)
-        
-        switch result {
-        case .success: break
-        case .failure(let error): print(error)
-        }
-    }
-    
     // MARK: Outputs types
     
     struct Inputs {
