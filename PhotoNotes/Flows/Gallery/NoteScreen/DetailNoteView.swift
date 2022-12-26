@@ -29,25 +29,35 @@ struct DetailNoteView: View {
                 Text(viewModel.note.date.getFormattedDate("dd MMM YYYY"))
                     .font(.title)
                     .foregroundColor(.yellow)
-                    .shadow(color: .black, radius: 0.2)
+                    .shadow(color: .black, radius: 3)
                     .blendMode(.luminosity)
                 Divider()
-                    .blendMode(.screen)
-                    .colorInvert()
+                    .background(ColorScheme.detailForeground)
+                    .shadow(color: .black, radius: 3)
                 
                 // note
+                let fadeGap: CGFloat = 50
                 ScrollView {
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(height: fadeGap)
                     ZStack(alignment: .topLeading) {
-                        // to fill all area
-                        Color.clear
                         TextEditorWithPlaceHolder(text: $viewModel.note.note)
                             .scrollContentBackground(.hidden)
                             .foregroundColor(ColorScheme.detailForeground)
-                            .shadow(color: .black, radius: 0.2)
+                            .shadow(color: .black, radius: 3)
                             .font(.title2.weight(.light))
                     }
+                    Rectangle()
+                        .foregroundColor(.clear)
+                        .frame(height: fadeGap)
                 }
-                .padding([.horizontal, .bottom])
+                .verticalGradient(height: fadeGap)
+                .padding(.horizontal)
+                .padding(.top, -fadeGap)
+                .padding(.bottom, -fadeGap)
+
+                .padding(.leading, 6)
                 
                 // action block
                 Button {
