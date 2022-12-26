@@ -13,7 +13,7 @@ struct PhotoNotesGridView: View {
                 ForEach(Array(viewModel.notes.enumerated()), id: \.offset) { index, note in
                     GeometryReader { geo in
                         Button {
-                            viewModel.outputs.showNoteSubject.send(note)
+                            viewModel.inputs.showNoteSubject.send(note)
                         } label: {
                             NoteGridCell(size: geo.size.width, item: note)
                         }
@@ -25,7 +25,7 @@ struct PhotoNotesGridView: View {
                         if isEditing {
                             Button {
                                 withAnimation {
-                                    viewModel.outputs.deleteNoteSubject.send(index)
+                                    viewModel.inputs.deleteNoteSubject.send(index)
                                 }
                             } label: {
                                 let font = gridColumns.count >= 3 ? Font.title3

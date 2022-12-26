@@ -7,7 +7,6 @@ final class GalleryViewModel: ObservableObject {
     @Published var noNotes: Bool = true
     
     let inputs = Inputs()
-    var outputs = Outputs()
     
     private let persistenceController: PersistenceController
     private var cancellables: Set<AnyCancellable> = []
@@ -18,7 +17,7 @@ final class GalleryViewModel: ObservableObject {
             .sink { [weak self] in self?.reloadData() }
             .store(in: &cancellables)
         
-        outputs.deleteNoteSubject
+        inputs.deleteNoteSubject
             .sink { [weak self] index in self?.deleteNote(index) }
             .store(in: &cancellables)
     }
@@ -47,11 +46,8 @@ final class GalleryViewModel: ObservableObject {
     
     struct Inputs {
         let becameActiveSubject = PassthroughSubject<Void, Never>()
-    }
-    
-    struct Outputs {
+        let showNoteSubject = PassthroughSubject<PhotoNote?, Never>()
         let addNoteSubject = PassthroughSubject<Void, Never>()
         let deleteNoteSubject = PassthroughSubject<Int, Never>()
-        let showNoteSubject = PassthroughSubject<PhotoNote?, Never>()
     }
 }

@@ -40,7 +40,7 @@ struct GalleryView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.outputs.addNoteSubject.send()
+                    viewModel.inputs.addNoteSubject.send()
                 } label: {
                     Image(systemName: "camera.badge.ellipsis")
                 }

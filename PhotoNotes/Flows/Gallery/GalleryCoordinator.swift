@@ -15,7 +15,7 @@ final class GalleryCoordinator {
     
     func start() {
         let viewModel = GalleryViewModel(persistenceController)
-        viewModel.outputs.addNoteSubject
+        viewModel.inputs.addNoteSubject
             .sink { [weak self] in self?.showAddNoteScreen() }
             .store(in: &cancellables)
         
