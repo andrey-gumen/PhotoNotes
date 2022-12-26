@@ -80,7 +80,6 @@ struct DetailNoteView: View {
                 }
             }
         }
-        .tint(ColorScheme.tintForeground)
     }
 
 }
