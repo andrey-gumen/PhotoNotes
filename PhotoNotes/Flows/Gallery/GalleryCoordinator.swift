@@ -13,22 +13,22 @@ final class GalleryCoordinator {
         self.navigationController = navigationController
     }
     
-    deinit{
-        print("deinit GalleryCoordinator")
-    }
-    
     func start() {
         let viewModel = GalleryViewModel(persistenceController)
-        let content = GalleryGridView(viewModel: viewModel)
-        
         viewModel.outputs.addNoteSubject
             .sink { [weak self] in self?.showAddNoteScreen() }
             .store(in: &cancellables)
         
+        let content = GalleryGridView(viewModel: viewModel)
         present(content)
     }
     
     private func showAddNoteScreen() {
+        let note = PhotoNote(date: Date.now)
+        showPickImageScreen(for: note)
+    }
+    
+    private func showPickImageScreen(for note: PhotoNote) {
         // show image picker
         // and then show detail note screen to specify data
         let sourceType = UIDevice.isSimulator
@@ -36,20 +36,23 @@ final class GalleryCoordinator {
             : UIImagePickerController.SourceType.camera
         let content = ImagePicker(sourceType: sourceType)
         content.selectedImageUrlsubject
-            .sink { [weak self] url in self?.showDetailNoteScreen(imageUrl: url) }
-            .store(in: &cancellables)
+            .sink { [weak self] url in
+                var changed = note
+                changed.imageUrl = url
+                self?.showDetailNoteScreen(for: changed)
+            }.store(in: &cancellables)
         present(content, transition: .fullScreen)
     }
     
-    private func showDetailNoteScreen(imageUrl: URL?) {
-        let note = PhotoNote(date: Date.now, imageUrl: imageUrl)
-        showDetailNoteScreen(note: note)
-    }
-    
-    private func showDetailNoteScreen(note: PhotoNote) {
+    private func showDetailNoteScreen(for note: PhotoNote) {
         let viewModel = DetailNoteViewModel(persistenceController, note)
-        let content = DetailNoteView(viewModel: viewModel)
+        viewModel.outputs.pickImageSubject
+            .sink { [weak self] in
+                self?.popView()
+                self?.showPickImageScreen(for: viewModel.note)
+            }.store(in: &cancellables)
         
+        let content = DetailNoteView(viewModel: viewModel)
         present(content)
     }
     
@@ -73,6 +76,10 @@ final class GalleryCoordinator {
             viewController.modalPresentationStyle = .fullScreen
             navigationController.present(viewController, animated: animated, completion: completion)
         }
+    }
+    
+    private func popView(animated: Bool = false) {
+        navigationController.popViewController(animated: animated)
     }
     
 }
