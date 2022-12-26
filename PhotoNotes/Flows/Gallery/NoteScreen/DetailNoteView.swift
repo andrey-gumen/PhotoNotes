@@ -61,7 +61,7 @@ struct DetailNoteView: View {
                 
                 // action block
                 Button {
-                    viewModel.outputs.deleteSubject.send(viewModel.note)
+                    viewModel.inputs.deleteSubject.send(viewModel.note)
                 } label: {
                     Image(systemName: "trash.fill")
                         .font(.title)
@@ -74,14 +74,14 @@ struct DetailNoteView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    viewModel.outputs.pickImageSubject.send()
+                    viewModel.inputs.pickImageSubject.send()
                 } label: {
                     Image(systemName: "camera.badge.ellipsis")
                 }
             }
         }
         .onDisappear() {
-            viewModel.outputs.saveNoteSubject.send()
+            viewModel.inputs.saveNoteSubject.send()
         }
     }
 

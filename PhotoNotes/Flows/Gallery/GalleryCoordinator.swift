@@ -46,7 +46,7 @@ final class GalleryCoordinator {
     
     private func showDetailNoteScreen(for note: PhotoNote) {
         let viewModel = DetailNoteViewModel(persistenceController, note)
-        viewModel.outputs.pickImageSubject
+        viewModel.inputs.pickImageSubject
             .sink { [weak self] in
                 self?.popView()
                 self?.showPickImageScreen(for: viewModel.note)

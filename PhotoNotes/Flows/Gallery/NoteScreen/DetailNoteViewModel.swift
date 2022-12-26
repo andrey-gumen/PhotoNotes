@@ -5,7 +5,7 @@ import UIKit
 final class DetailNoteViewModel: ObservableObject {
     
     @Published var note: PhotoNote
-    let outputs = Outputs()
+    let inputs = Inputs()
     
     private let persistenceController: PersistenceController
     private var cancellables: Set<AnyCancellable> = []
@@ -14,7 +14,7 @@ final class DetailNoteViewModel: ObservableObject {
         self.persistenceController = persistenceController
         self.note = note
        
-        outputs.saveNoteSubject
+        inputs.saveNoteSubject
             .sink { [weak self] in self?.saveNote() }
             .store(in: &cancellables)
     }
@@ -39,7 +39,7 @@ final class DetailNoteViewModel: ObservableObject {
     
     // MARK: Outputs types
     
-    struct Outputs {
+    struct Inputs {
         let saveNoteSubject = PassthroughSubject<Void, Never>()
         let pickImageSubject = PassthroughSubject<Void, Never>()
         let deleteSubject = PassthroughSubject<PhotoNote, Never>()
