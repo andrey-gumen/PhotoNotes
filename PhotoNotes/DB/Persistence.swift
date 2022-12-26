@@ -69,7 +69,7 @@ struct PersistenceController {
             do {
                 let storage = NSManagedObject(entity: entity, insertInto: managedContext)
                 storage.setValue(note.date, forKey: PhotoNoteEntityConstants.DateKey)
-                storage.setValue(note.imageUrl?.absoluteString, forKey: PhotoNoteEntityConstants.ImageUrlKey)
+                storage.setValue(note.imageUrl?.lastPathComponent, forKey: PhotoNoteEntityConstants.ImageUrlKey)
                 storage.setValue(note.note, forKey: PhotoNoteEntityConstants.NoteKey)
                 
                 try managedContext.save()
@@ -134,6 +134,7 @@ struct PersistenceController {
                     print("object \(index): \(error)")
                 }
             }
+            
             return .success(notes)
         } catch let error as NSError {
             return .failure(error)
@@ -159,14 +160,16 @@ struct PersistenceController {
     }
     
     private static func getUrl(key: String, object: NSManagedObject) throws -> URL?  {
-        let data = object.value(forKey: PhotoNoteEntityConstants.ImageUrlKey) as? String
-        guard let data else {
+        let fileName = object.value(forKey: PhotoNoteEntityConstants.ImageUrlKey) as? String
+        guard let fileName else {
             return nil
         }
         
-        guard let url = URL(string: data) else {
-            throw PersistenceError.PhotoNoteEntityParsing
+        guard let documentDirectory = FileManager.default.documentDirectory else {
+            return nil
         }
+        
+        let url = documentDirectory.appendingPathComponent(fileName)
         return url
     }
 
