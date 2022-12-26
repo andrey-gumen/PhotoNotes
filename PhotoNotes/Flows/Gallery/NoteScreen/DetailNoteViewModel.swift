@@ -20,7 +20,6 @@ final class DetailNoteViewModel: ObservableObject {
     }
     
     private func saveNote() {
-        let note = PhotoNote(date: Date.now)
         let result = persistenceController.add(note: note)
         
         switch result {

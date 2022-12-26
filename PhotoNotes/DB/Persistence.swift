@@ -69,7 +69,7 @@ struct PersistenceController {
             do {
                 let storage = NSManagedObject(entity: entity, insertInto: managedContext)
                 storage.setValue(note.date, forKey: PhotoNoteEntityConstants.DateKey)
-                storage.setValue(note.imageUrl, forKey: PhotoNoteEntityConstants.ImageUrlKey)
+                storage.setValue(note.imageUrl?.absoluteString, forKey: PhotoNoteEntityConstants.ImageUrlKey)
                 storage.setValue(note.note, forKey: PhotoNoteEntityConstants.NoteKey)
                 
                 try managedContext.save()

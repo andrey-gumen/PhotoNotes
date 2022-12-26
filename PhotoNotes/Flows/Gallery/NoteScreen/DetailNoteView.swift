@@ -80,6 +80,9 @@ struct DetailNoteView: View {
                 }
             }
         }
+        .onDisappear() {
+            viewModel.outputs.saveNoteSubject.send()
+        }
     }
 
 }
