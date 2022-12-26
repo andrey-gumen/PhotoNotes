@@ -24,7 +24,7 @@ final class DetailNoteViewModel: ObservableObject {
     }
     
     private func deleteNote() {
-        let result = persistenceController.update(note: note)
+        let result = persistenceController.delete(note: note)
         
         switch result {
         case .success: break

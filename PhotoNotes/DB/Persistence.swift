@@ -78,6 +78,20 @@ struct PersistenceController {
             return .failure(error)
         }
     }
+    
+    func delete(note: PhotoNote) -> Result<Void, Error> {
+        do {
+            guard let object = try findStorage(for: note) else {
+                return .failure(PersistenceError.PhotoNoteEntityDelete)
+            }
+            try delete(object: object)
+
+            try managedContext.save()
+            return .success(())
+        } catch let error as NSError {
+            return .failure(error)
+        }
+    }
 
     func delete(offset: Int) -> Result<Void, Error> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
@@ -143,11 +157,18 @@ struct PersistenceController {
     // MARK: Helpers
 
     private func findOrCreateStorage(for note: PhotoNote) throws -> NSManagedObject {
+        return try findStorage(for: note) ?? createStorage()
+    }
+    
+    private func findStorage(for note: PhotoNote) throws -> NSManagedObject? {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
         fetchRequest.predicate = NSPredicate(format: "id == %@", note.id)
 
         let objects = try managedContext.fetch(fetchRequest)
-        return objects.isEmpty ? try createStorage() : objects[0]
+        if objects.count > 1 {
+            print("error: several object for id: \(note.id)")
+        }
+        return objects.isEmpty ? nil : objects[0]
     }
     
     private func createStorage() throws -> NSManagedObject {
