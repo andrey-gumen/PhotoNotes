@@ -20,7 +20,7 @@ final class DetailNoteViewModel: ObservableObject {
     }
     
     private func saveNote() {
-        let result = persistenceController.add(note: note)
+        let result = persistenceController.update(note: note)
         
         switch result {
         case .success: break
