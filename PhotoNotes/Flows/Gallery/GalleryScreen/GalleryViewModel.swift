@@ -46,7 +46,7 @@ final class GalleryViewModel: ObservableObject {
     
     struct Inputs {
         let becameActiveSubject = PassthroughSubject<Void, Never>()
-        let showNoteSubject = PassthroughSubject<PhotoNote?, Never>()
+        let showNoteSubject = PassthroughSubject<PhotoNote, Never>()
         let addNoteSubject = PassthroughSubject<Void, Never>()
         let deleteNoteSubject = PassthroughSubject<Int, Never>()
     }

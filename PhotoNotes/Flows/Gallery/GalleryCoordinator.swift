@@ -18,6 +18,9 @@ final class GalleryCoordinator {
         viewModel.inputs.addNoteSubject
             .sink { [weak self] in self?.showAddNoteScreen() }
             .store(in: &cancellables)
+        viewModel.inputs.showNoteSubject
+            .sink { [weak self] note in self?.showDetailNoteScreen(for: note) }
+            .store(in: &cancellables)
         
         let content = GalleryView(viewModel: viewModel)
         present(content)
