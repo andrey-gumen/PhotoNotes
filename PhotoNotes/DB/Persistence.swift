@@ -2,14 +2,14 @@ import CoreData
 import UIKit
 
 struct PersistenceController {
-    
+
     let container: NSPersistentContainer
-    
+
     // MARK: Preview
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        
+
         let urls = PersistenceController.urls
         for i in 0 ..< 10 {
             let newItem = PhotoNoteEntity(context: viewContext)
@@ -27,19 +27,19 @@ struct PersistenceController {
         }
         return result
     }()
-    
+
     static var urls: [URL]? = {
         let urls = Bundle.main.urls(forResourcesWithExtension: "jpg", subdirectory: nil)
         return urls
     }()
-    
+
     // MARK: runtime
     static let shared = PersistenceController()
-    
+
     var managedContext: NSManagedObjectContext {
         container.viewContext
     }
-    
+
     private init(inMemory: Bool = false) {
         self.container = NSPersistentContainer(name: "PhotoNotes")
         if inMemory {
@@ -64,24 +64,21 @@ struct PersistenceController {
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
 
-    func add(note: PhotoNote) -> Result<Void, Error> {
-        if let entity = NSEntityDescription.entity(forEntityName: PhotoNoteEntityConstants.Name, in: managedContext) {
-            do {
-                let storage = NSManagedObject(entity: entity, insertInto: managedContext)
-                storage.setValue(note.date, forKey: PhotoNoteEntityConstants.DateKey)
-                storage.setValue(note.imageUrl?.lastPathComponent, forKey: PhotoNoteEntityConstants.ImageUrlKey)
-                storage.setValue(note.note, forKey: PhotoNoteEntityConstants.NoteKey)
-                
-                try managedContext.save()
-                return .success(Void())
-            } catch let error as NSError {
-                return .failure(error)
-            }
-        } else {
-            return .failure(PersistenceError.PhotoNoteEntityCreation)
+    func update(note: PhotoNote) -> Result<Void, Error> {
+        do {
+            let storage = try findOrCreateStorage(for: note)
+            storage.setValue(note.id, forKey: PhotoNoteEntityConstants.IdKey)
+            storage.setValue(note.date, forKey: PhotoNoteEntityConstants.DateKey)
+            storage.setValue(note.imageUrl?.lastPathComponent, forKey: PhotoNoteEntityConstants.ImageUrlKey)
+            storage.setValue(note.note, forKey: PhotoNoteEntityConstants.NoteKey)
+
+            try managedContext.save()
+            return .success(())
+        } catch let error as NSError {
+            return .failure(error)
         }
     }
-    
+
     func delete(offset: Int) -> Result<Void, Error> {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
 
@@ -89,9 +86,9 @@ struct PersistenceController {
             let objects = try managedContext.fetch(fetchRequest)
             let object = objects[offset]
             try delete(object: object)
-            
+
             try managedContext.save()
-            return .success(Void())
+            return .success(())
         } catch let error as NSError {
             return .failure(error)
         }
@@ -107,16 +104,18 @@ struct PersistenceController {
             }
 
             try managedContext.save()
-            return .success(Void())
+            return .success(())
         } catch let error as NSError {
             return .failure(error)
         }
     }
-    
+
     private func delete(object: NSManagedObject) throws {
-        if let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: object) {
-            FileManager.default.removeItemFromDocumentDirectory(url: imageUrl)
-        }
+        // we need image maanger
+        // we can delete duplicated image
+//        if let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: object) {
+//            FileManager.default.removeItemFromDocumentDirectory(url: imageUrl)
+//        }
         managedContext.delete(object)
     }
 
@@ -134,68 +133,83 @@ struct PersistenceController {
                     print("object \(index): \(error)")
                 }
             }
-            
+
             return .success(notes)
         } catch let error as NSError {
             return .failure(error)
         }
     }
-    
 
     // MARK: Helpers
 
+    private func findOrCreateStorage(for note: PhotoNote) throws -> NSManagedObject {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: PhotoNoteEntityConstants.Name)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", note.id)
+
+        let objects = try managedContext.fetch(fetchRequest)
+        return objects.isEmpty ? try createStorage() : objects[0]
+    }
+    
+    private func createStorage() throws -> NSManagedObject {
+        let entity = NSEntityDescription.entity(forEntityName: PhotoNoteEntityConstants.Name, in: managedContext)
+        return NSManagedObject(entity: entity!, insertInto: managedContext)
+    }
+
     private static func getNote(_ object: NSManagedObject) throws -> PhotoNote {
-        guard let date = object.value(forKey: PhotoNoteEntityConstants.DateKey) as? Date else {
+        guard let id = object.value(forKey: PhotoNoteEntityConstants.IdKey) as? String else {
             throw PersistenceError.PhotoNoteEntityParsing
         }
         
+        guard let date = object.value(forKey: PhotoNoteEntityConstants.DateKey) as? Date else {
+            throw PersistenceError.PhotoNoteEntityParsing
+        }
+
         let note = object.value(forKey: PhotoNoteEntityConstants.NoteKey) as? String ?? ""
         let imageUrl = try PersistenceController.getUrl(key: PhotoNoteEntityConstants.ImageUrlKey, object: object)
-        
+
         return PhotoNote(
+            id: id,
             date: date,
             imageUrl: imageUrl,
             note: note
         )
     }
     
-    private static func getUrl(key: String, object: NSManagedObject) throws -> URL?  {
+    private static func getUrl(key: String, object: NSManagedObject) throws -> URL? {
         let fileName = object.value(forKey: PhotoNoteEntityConstants.ImageUrlKey) as? String
         guard let fileName else {
             return nil
         }
-        
+
         guard let documentDirectory = FileManager.default.documentDirectory else {
             return nil
         }
-        
+
         let url = documentDirectory.appendingPathComponent(fileName)
         return url
     }
 
-    private static func getImage(key: String, object: NSManagedObject) throws -> UIImage?  {
+    private static func getImage(key: String, object: NSManagedObject) throws -> UIImage? {
         let imageData = object.value(forKey: key) as? Data
         guard let imageData else {
             return nil
         }
-        
+
         guard let image = UIImage(data: imageData) else {
             throw PersistenceError.PhotoNoteEntityParsing
         }
         return image
     }
-    
 }
 
 private extension PersistenceController {
-    
+
     // MARK: PhotoNote entity constants
-    struct PhotoNoteEntityConstants {
+    enum PhotoNoteEntityConstants {
         static let Name = "PhotoNoteEntity"
+        static let IdKey = "id"
         static let DateKey = "date"
         static let ImageUrlKey = "imageUrl"
         static let NoteKey = "note"
     }
-    
 }
-

@@ -2,9 +2,8 @@ import Foundation
 import SwiftUI
 
 struct PhotoNote: Identifiable {
-    let id: UUID = UUID()
-    
     // MARK: required properties
+    var id: String = UUID().uuidString
     var date: Date
     
     // MARK: optional properties
