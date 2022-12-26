@@ -55,6 +55,20 @@ final class GalleryCoordinator {
                 self?.showPickImageScreen(for: viewModel.note)
             }.store(in: &cancellables)
         
+        viewModel.inputs.saveNoteSubject
+            .sink { [weak self] in self?.popView(animated: true) }
+            .store(in: &cancellables)
+        
+        viewModel.inputs.deleteSubject
+            .sink { [weak self] in self?.popView(animated: true) }
+            .store(in: &cancellables)
+        
+        viewModel.inputs.pickImageSubject
+            .sink { [weak self] in
+                self?.popView()
+                self?.showPickImageScreen(for: viewModel.note)
+            }.store(in: &cancellables)
+        
         let content = DetailNoteView(viewModel: viewModel)
         present(content)
     }

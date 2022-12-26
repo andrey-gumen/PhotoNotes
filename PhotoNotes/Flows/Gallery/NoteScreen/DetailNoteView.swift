@@ -61,7 +61,7 @@ struct DetailNoteView: View {
                 
                 // action block
                 Button {
-                    viewModel.inputs.deleteSubject.send(viewModel.note)
+                    viewModel.inputs.deleteSubject.send()
                 } label: {
                     Image(systemName: "trash.fill")
                         .font(.title)
@@ -71,7 +71,16 @@ struct DetailNoteView: View {
             .frame(maxWidth: UIScreen.main.bounds.size.width)
             .padding(.horizontal)
         }
+        .navigationBarBackButtonHidden(true)
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    viewModel.inputs.saveNoteSubject.send()
+                } label: {
+                    Text("Save")
+                }
+            }
+            
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     viewModel.inputs.pickImageSubject.send()
@@ -79,9 +88,6 @@ struct DetailNoteView: View {
                     Image(systemName: "camera.badge.ellipsis")
                 }
             }
-        }
-        .onDisappear() {
-            viewModel.inputs.saveNoteSubject.send()
         }
     }
 

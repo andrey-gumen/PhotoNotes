@@ -17,6 +17,19 @@ final class DetailNoteViewModel: ObservableObject {
         inputs.saveNoteSubject
             .sink { [weak self] in self?.saveNote() }
             .store(in: &cancellables)
+        
+        inputs.deleteSubject
+            .sink { [weak self] in self?.deleteNote() }
+            .store(in: &cancellables)
+    }
+    
+    private func deleteNote() {
+        let result = persistenceController.update(note: note)
+        
+        switch result {
+        case .success: break
+        case .failure(let error): print(error)
+        }
     }
     
     private func saveNote() {
@@ -31,9 +44,9 @@ final class DetailNoteViewModel: ObservableObject {
     // MARK: Outputs types
     
     struct Inputs {
-        let saveNoteSubject = PassthroughSubject<Void, Never>()
         let pickImageSubject = PassthroughSubject<Void, Never>()
-        let deleteSubject = PassthroughSubject<PhotoNote, Never>()
+        let saveNoteSubject = PassthroughSubject<Void, Never>()
+        let deleteSubject = PassthroughSubject<Void, Never>()
     }
 }
 
