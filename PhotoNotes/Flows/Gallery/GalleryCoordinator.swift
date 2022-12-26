@@ -19,7 +19,7 @@ final class GalleryCoordinator {
             .sink { [weak self] in self?.showAddNoteScreen() }
             .store(in: &cancellables)
         
-        let content = GalleryGridView(viewModel: viewModel)
+        let content = GalleryView(viewModel: viewModel)
         present(content)
     }
     
